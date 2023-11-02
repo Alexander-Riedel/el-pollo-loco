@@ -14,10 +14,21 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollisions();
     }
 
     setWorld() {
         this.character.world = this;
+    }
+
+    checkCollisions() {
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    console.log('Collission with Character', enemy);
+                }
+            })
+        }, 100);
     }
 
     draw() {
@@ -26,8 +37,8 @@ class World {
 
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
+        this.addObjectsToMap(this.level.enemies);
 
         this.ctx.translate(-this.camera_x, this.camery_y);
 
@@ -67,5 +78,6 @@ class World {
         this.ctx.restore();
         mo.x = mo.x * -1;
     }
+
 
 }
