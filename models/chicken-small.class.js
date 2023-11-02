@@ -1,10 +1,10 @@
 class ChickenSmall extends MovableObject {3
 
     y = 382;
-    x = 200 + Math.random() * 300; // Spawn
+    x = 800 + Math.random() * 4000; // Spawn
     height = 40;
     width = 25;
-    speed = 0.15 + Math.random(); // Speed
+    speed = 0.15 + Math.random() * (1 + Math.random()); // Speed
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
@@ -23,10 +23,7 @@ class ChickenSmall extends MovableObject {3
         this.moveLeft();
 
         setInterval(() => {
-            let i = this.currentImage++ % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_WALKING);
         }, 1000 / 10);
     }
 
