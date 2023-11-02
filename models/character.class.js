@@ -2,7 +2,7 @@ class Character extends MovableObject {
 
     y = 80 // 227
     height = 200;
-    speed = 7.5;
+    speed = 10;
     currentImage = 0;
     world;
     walking_sound = new Audio('audio/step.wav');
@@ -32,7 +32,6 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_JUMPING);
         this.applyGravity();
         this.animate();
-
     }
 
     animate() {
@@ -43,11 +42,19 @@ class Character extends MovableObject {
                 this.otherDirection = false;
                 this.walking_sound.play();
             }
+
             if (this.world.keyboard.LEFT && this.x > -250) {
                 this.x -= this.speed;
                 this.otherDirection = true;
                 this.walking_sound.play();
             }
+
+            //console.log(this.speedY)
+
+            if (this.world.keyboard.UP || this.world.keyboard.SPACE) {
+                this.speedY = 20;
+            }
+
             this.world.camera_x = -this.x + 120;
         }, 1000 / 30);
 
