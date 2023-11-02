@@ -1,4 +1,5 @@
-class ChickenSmall extends MovableObject {3
+class ChickenSmall extends MovableObject {
+    3
 
     y = 382;
     x = 800 + Math.random() * 4000; // Spawn
@@ -20,7 +21,9 @@ class ChickenSmall extends MovableObject {3
     }
 
     animate() {
-        this.moveLeft();
+        setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 30);
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
