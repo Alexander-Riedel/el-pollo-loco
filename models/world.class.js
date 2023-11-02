@@ -7,7 +7,10 @@ class World {
     enemies = [
         new Chicken(),
         new Chicken(),
-        new Chicken()
+        new Chicken(),
+        new ChickenSmall(),
+        new ChickenSmall(),
+        new ChickenSmall()
     ];
     backgroundObjects = [
         new BackgroundObject('img/5_background/layers/air.png', 0),
