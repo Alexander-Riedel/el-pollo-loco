@@ -7,7 +7,7 @@ function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
 
-    console.log('My character is', world.character);
+    //console.log('My character is', world.character);
 }
 
 
@@ -36,7 +36,7 @@ window.addEventListener("keydown", (e) => {
         keyboard.D = true;
     }
 
-    console.log(e);
+    //console.log(e);
 });
 
 
@@ -65,5 +65,5 @@ window.addEventListener("keyup", (e) => {
         keyboard.D = false;
     }
 
-    console.log(e);
+    //console.log(e);
 });
