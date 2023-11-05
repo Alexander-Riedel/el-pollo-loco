@@ -7,6 +7,8 @@ class World {
     keyboard;
     camera_x = 0;
     camery_y = 0;
+    statusBar = new StatusBar();
+    throwableObjects = [];d
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -14,30 +16,50 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     setWorld() {
         this.character.world = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    console.log('Collission with Character', 'Left Energy:', this.character.energy);
-                }
-            })
+            this.checkCollisions();
+            this.checkThrowableObjects()
         }, 100);
+    }
+
+    checkThrowableObjects() {
+        if(this.keyboard.D) {
+            let bottle = new ThrowableObject(this.character.x, this.character.y);
+            this.throwableObjects.push(bottle);
+        }
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                console.log('Collission with Character', 'Left Energy:', this.character.energy);
+                this.statusBar.setPercentage(this.character.energy);
+            }
+        })
     }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.translate(this.camera_x, this.camery_y);
 
+        this.ctx.translate(this.camera_x, this.camery_y);
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
+
+        this.ctx.translate(-this.camera_x, -this.camery_y);
+        // ---------------- space for fixed objects -------------------
+        this.addToMap(this.statusBar);
+        this.ctx.translate(this.camera_x, this.camery_y);
+
+        this.addObjectsToMap(this.throwableObjects)
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
 
