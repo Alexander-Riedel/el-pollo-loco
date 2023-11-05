@@ -1,7 +1,6 @@
 class MovableObject extends DrawableObject {
 
     width = 95;
-    width = 100;
     speed = 0.15;
     otherDirection = false;
     speedY = 0;
@@ -47,10 +46,10 @@ class MovableObject extends DrawableObject {
     }
 
     isColliding(mo) {
-        return this.x + this.width > mo.x &&
-            this.y + this.height > mo.y &&
-            this.x < mo.x &&
-            this.y < mo.y + mo.height
+        return this.x + this.width > mo.x &&    // R -> L
+            this.y + this.height > mo.y &&      // T -> B
+            this.x < mo.x + mo.width &&         // L -> R
+            this.y < mo.y + mo.height           // B -> T
     }
 
     hit() {

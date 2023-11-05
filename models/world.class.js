@@ -7,8 +7,11 @@ class World {
     keyboard;
     camera_x = 0;
     camery_y = 0;
-    statusBar = new StatusBar();
-    throwableObjects = [];d
+    statusBarHealth = new StatusBarHealth();
+    statusBarCoins = new StatusBarCoins();
+    statusBarBottles = new StatusBarBottles();
+    statusBarEndboss = new StatusBarEndboss();
+    throwableObjects = [];
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -56,7 +59,10 @@ class World {
 
         this.ctx.translate(-this.camera_x, -this.camery_y);
         // ---------------- space for fixed objects -------------------
-        this.addToMap(this.statusBar);
+        this.addToMap(this.statusBarHealth);
+        this.addToMap(this.statusBarCoins);
+        this.addToMap(this.statusBarBottles);
+        this.addToMap(this.statusBarEndboss);
         this.ctx.translate(this.camera_x, this.camery_y);
 
         this.addObjectsToMap(this.throwableObjects)
