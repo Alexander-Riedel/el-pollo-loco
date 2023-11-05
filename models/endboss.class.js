@@ -1,4 +1,4 @@
-class Endboss extends MovableObject {
+class Endboss extends CollidableObject {
 
     y = 230;
     x = 6500; // Spawn

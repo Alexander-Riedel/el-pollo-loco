@@ -14,7 +14,7 @@ class MovableObject extends DrawableObject {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
-        }, 1000 / 60)
+        }, 1000 / 45)
     }
 
     isAboveGround() {
@@ -43,13 +43,6 @@ class MovableObject extends DrawableObject {
 
     jump() {
         this.speedY = 30;
-    }
-
-    isColliding(mo) {
-        return this.x + this.width > mo.x &&    // R -> L
-            this.y + this.height > mo.y &&      // T -> B
-            this.x < mo.x + mo.width &&         // L -> R
-            this.y < mo.y + mo.height           // B -> T
     }
 
     hit() {

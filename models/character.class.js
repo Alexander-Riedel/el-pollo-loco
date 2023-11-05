@@ -1,4 +1,4 @@
-class Character extends MovableObject {
+class Character extends CollidableObject {
 
     y = 227 // 227
     height = 200;

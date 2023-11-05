@@ -1,4 +1,4 @@
-class ChickenSmall extends MovableObject {
+class ChickenSmall extends CollidableObject {
     3
 
     y = 382;
