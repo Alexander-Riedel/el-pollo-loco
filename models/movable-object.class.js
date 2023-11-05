@@ -6,6 +6,8 @@ class MovableObject extends DrawableObject {
     speedY = 0;
     acceleration = 2;
     energy = 100;
+    coins = 0;
+    bottles = 0;
     lastHit = 0;
 
     applyGravity() {
@@ -26,10 +28,10 @@ class MovableObject extends DrawableObject {
     }
 
     playAnimation(images) {
-            let i = this.currentImage++ % images.length;
-            let path = images[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+        let i = this.currentImage++ % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
     }
 
     moveRight() {
@@ -46,7 +48,7 @@ class MovableObject extends DrawableObject {
     }
 
     hit() {
-        if (this.energy > 0) {
+        if (this.energy > 0 && new Date().getTime() - this.lastHit > 500) {
             this.energy -= 20;
             this.lastHit = new Date().getTime();
         }
@@ -60,6 +62,18 @@ class MovableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
+    }
+
+    collectCoin() {
+        this.coins++;
+        //this.collect_coin_sound.volume = 0.1;
+        //this.collect_coin_sound.play();
+    }
+
+    collectBottle() {
+        this.bottles++;
+        //this.collect_bottle_sound.volume = 0.1;
+        //this.collect_bottle_sound.play();
     }
 
 }
