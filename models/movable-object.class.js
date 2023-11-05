@@ -1,7 +1,7 @@
 class MovableObject extends DrawableObject {
 
     width = 95;
-    speed = 0.15;
+    speed = 3;
     otherDirection = false;
     speedY = 0;
     acceleration = 2;
@@ -26,10 +26,10 @@ class MovableObject extends DrawableObject {
     }
 
     playAnimation(images) {
-        let i = this.currentImage++ % images.length;
-        let path = images[i];
-        this.img = this.imageCache[path];
-        this.currentImage++;
+            let i = this.currentImage++ % images.length;
+            let path = images[i];
+            this.img = this.imageCache[path];
+            this.currentImage++;
     }
 
     moveRight() {

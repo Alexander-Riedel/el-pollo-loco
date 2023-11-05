@@ -34,7 +34,7 @@ class World {
     }
 
     checkThrowableObjects() {
-        if(this.keyboard.D) {
+        if (this.keyboard.D) {
             let bottle = new ThrowableObject(this.character.x, this.character.y);
             this.throwableObjects.push(bottle);
         }
@@ -50,12 +50,24 @@ class World {
         })
     }
 
+    /*     checkCollisionsCollectibleObjects() {
+            this.level..forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    this.character.hit();
+                    console.log('Collission with Character', 'Left Energy:', this.character.energy);
+                    this.statusBarHealth.setPercentage(this.character.energy);
+                }
+            })
+        } */
+
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.camera_x, this.camery_y);
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.buildings);
+        this.addObjectsToMap(this.level.collectibleObjects);
 
         this.ctx.translate(-this.camera_x, -this.camery_y);
         // ---------------- space for fixed objects -------------------
@@ -65,7 +77,7 @@ class World {
         this.addToMap(this.statusBarEndboss);
         this.ctx.translate(this.camera_x, this.camery_y);
 
-        this.addObjectsToMap(this.throwableObjects)
+        this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
 

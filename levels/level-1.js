@@ -1,44 +1,36 @@
 const level1 = new Level(
 
     [
+        new ChickenSmall(),
+        new ChickenSmall(),
+        new ChickenSmall(),
+        new ChickenSmall(),
+        new ChickenSmall(),
         new Chicken(),
         new Chicken(),
         new Chicken(),
         new Chicken(),
         new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
         new Endboss()
     ],
     [
-        new Cloud('img/5_background/layers/4_clouds/1.png'),
-        new Cloud('img/5_background/layers/4_clouds/2.png')
+        new Cloud('img/5_background/layers/4_clouds/1.png', 0),
+        new Cloud('img/5_background/layers/4_clouds/2.png', 719 * 1),
+        new Cloud('img/5_background/layers/4_clouds/1.png', 719 * 2),
+        new Cloud('img/5_background/layers/4_clouds/2.png', 719 * 3),
+        new Cloud('img/5_background/layers/4_clouds/1.png', 719 * 4),
+        new Cloud('img/5_background/layers/4_clouds/2.png', 719 * 5),
+        new Cloud('img/5_background/layers/4_clouds/1.png', 719 * 6),
+        new Cloud('img/5_background/layers/4_clouds/2.png', 719 * 7),
+        new Cloud('img/5_background/layers/4_clouds/1.png', 719 * 8),
+        new Cloud('img/5_background/layers/4_clouds/2.png', 719 * 9),
+        new Cloud('img/5_background/layers/4_clouds/1.png', 719 * 10)
     ],
     [
+        new BackgroundObject('img/5_background/layers/air.png', -719 * 2),
+        new BackgroundObject('img/5_background/layers/3_third_layer/1.png', -719 * 2),
+        new BackgroundObject('img/5_background/layers/2_second_layer/1.png', -719 * 2),
+        new BackgroundObject('img/5_background/layers/1_first_layer/1.png', -719 * 2),
         new BackgroundObject('img/5_background/layers/air.png', -719),
         new BackgroundObject('img/5_background/layers/3_third_layer/2.png', -719),
         new BackgroundObject('img/5_background/layers/2_second_layer/2.png', -719),
@@ -87,6 +79,113 @@ const level1 = new Level(
         new BackgroundObject('img/5_background/layers/3_third_layer/1.png', 719 * 10),
         new BackgroundObject('img/5_background/layers/2_second_layer/1.png', 719 * 10),
         new BackgroundObject('img/5_background/layers/1_first_layer/1.png', 719 * 10)
+    ],
+    [
+        new Building('img/0_building/Wall_A_03.png', -940, 100, 128, 320),
+        new Building('img/0_building/Wall_A_02.png', -1260, 100, 320, 320)
+    ],
+    [
+        // 35 coins - easter egg
+        new Coin(-300, 100),
+        new Coin(-300, 150),
+        new Coin(-300, 200),
+        new Coin(-300, 250),
+        new Coin(-300, 300),
+        new Coin(-350, 100),
+        new Coin(-350, 150),
+        new Coin(-350, 200),
+        new Coin(-350, 250),
+        new Coin(-350, 300),
+        new Coin(-400, 100),
+        new Coin(-400, 150),
+        new Coin(-400, 200),
+        new Coin(-400, 250),
+        new Coin(-400, 300),
+        new Coin(-450, 100),
+        new Coin(-450, 150),
+        new Coin(-450, 200),
+        new Coin(-450, 250),
+        new Coin(-450, 300),
+        new Coin(-500, 100),
+        new Coin(-500, 150),
+        new Coin(-500, 200),
+        new Coin(-500, 250),
+        new Coin(-500, 300),
+        new Coin(-550, 100),
+        new Coin(-550, 150),
+        new Coin(-550, 200),
+        new Coin(-550, 250),
+        new Coin(-550, 300),
+        new Coin(-600, 100),
+        new Coin(-600, 150),
+        new Coin(-600, 200),
+        new Coin(-600, 250),
+        new Coin(-600, 300),
+
+        // 1 coin 
+        new Coin(500, 100),
+
+        // 3 coins
+        new Coin(1000, 150),
+        new Coin(1050, 100),
+        new Coin(1100, 150),
+
+        // 5 coins
+        new Coin(1650, 200),
+        new Coin(1650, 150),
+        new Coin(1700, 100),
+        new Coin(1750, 200),
+        new Coin(1750, 150),
+
+        // 4 coins
+        new Coin(2300, 150),
+        new Coin(2350, 150),
+        new Coin(2400, 150),
+        new Coin(2450, 150),
+        new Coin(2500, 150),
+
+        // 5 coins vertical
+        new Coin(3300, 100),
+        new Coin(3300, 150),
+        new Coin(3300, 200),
+        new Coin(3300, 250),
+        new Coin(3300, 300),
+
+        // 2 coins
+        new Coin(4000, 150),
+        new Coin(4050, 150),
+
+        // 1 coin
+        new Coin(4550, 100),
+
+        // 2 coins
+        new Coin(5050, 150),
+        new Coin(5100, 150),
+
+        // 3 coins
+        new Coin(5600, 150),
+        new Coin(5650, 100),
+        new Coin(5700, 150),
+
+        // bottles
+        new Bottle(750, 360),
+        new Bottle(1350, 360),
+        new Bottle(1400, 360),
+        new Bottle(2850, 360),
+        new Bottle(3000, 360),
+        new Bottle(3650, 360),
+        new Bottle(3650, 360),
+        new Bottle(4800, 360),
+        new Bottle(5400, 360),
+        new Bottle(5850, 360),
+        new Bottle(5870, 360),
+        new Bottle(5910, 360),
+        new Bottle(6050, 360),
+        new Bottle(6250, 360),
+        new Bottle(6270, 360),
+        new Bottle(6550, 360),
+        new Bottle(6570, 360)
+
     ]
 
 );

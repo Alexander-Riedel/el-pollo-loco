@@ -2,10 +2,12 @@ class Character extends CollidableObject {
 
     y = 227 // 227
     height = 200;
-    speed = 10;
+    speed = 7.5;
     currentImage = 0;
     world;
     walking_sound = new Audio('audio/step.wav');
+    jump_sound = new Audio('audio/jump.wav');
+    hurt_sound = new Audio('audio/hurt.wav');
 
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
@@ -39,6 +41,18 @@ class Character extends CollidableObject {
         'img/2_character_pepe/4_hurt/H-42.png',
         'img/2_character_pepe/4_hurt/H-43.png'
     ];
+    IMAGES_IDLE = [
+        'img/2_character_pepe/1_idle/idle/I-1.png',
+        'img/2_character_pepe/1_idle/idle/I-2.png',
+        'img/2_character_pepe/1_idle/idle/I-3.png',
+        'img/2_character_pepe/1_idle/idle/I-4.png',
+        'img/2_character_pepe/1_idle/idle/I-5.png',
+        'img/2_character_pepe/1_idle/idle/I-6.png',
+        'img/2_character_pepe/1_idle/idle/I-7.png',
+        'img/2_character_pepe/1_idle/idle/I-8.png',
+        'img/2_character_pepe/1_idle/idle/I-9.png',
+        'img/2_character_pepe/1_idle/idle/I-10.png',
+    ];
 
     constructor() {
         super().loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
@@ -46,6 +60,7 @@ class Character extends CollidableObject {
         this.loadImages(this.IMAGES_JUMPING);
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_IDLE);
         this.applyGravity();
         this.animate();
     }
@@ -54,19 +69,18 @@ class Character extends CollidableObject {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
-                this.walking_sound.play();
+                //this.walking_sound.play();
             }
-            if (this.world.keyboard.LEFT && this.x > -250) {
+            if (this.world.keyboard.LEFT && this.x > this.world.level.level_start_x) {
                 this.moveLeft();
                 this.otherDirection = true;
-                this.walking_sound.play();
+                //this.walking_sound.play();
             }
             if ((this.world.keyboard.UP || this.world.keyboard.SPACE) && !this.isAboveGround()) {
                 this.jump();
             }
-
-            this.world.camera_x = -this.x + 120;
-        }, 1000 / 30);
+            this.world.camera_x = -this.x + 160;
+        }, 1000 / 60);
 
         setInterval(() => {
             if (this.isDead()) {
@@ -77,8 +91,25 @@ class Character extends CollidableObject {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
                 this.playAnimation(this.IMAGES_WALKING);
+            } else if (!this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_IDLE);
             }
-        }, 100);
+        }, 1000 / 5);
+
+        setInterval(() => {
+            if (this.isDead()) {
+                
+            } else if (this.isHurt()) {
+                this.hurt_sound.volume = 0.2;
+                this.hurt_sound.play();
+            } else if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+                this.jump_sound.play();
+            } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.world.character.y == 227) {
+                this.walking_sound.play();
+            } else if (!this.isAboveGround()) {
+                
+            }
+        }, 1000 / 60);
 
     }
 }
