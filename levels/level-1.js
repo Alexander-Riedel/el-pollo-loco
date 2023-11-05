@@ -82,7 +82,10 @@ const level1 = new Level(
     ],
     [
         new Building('img/0_building/Wall_A_03.png', -940, 100, 128, 320),
-        new Building('img/0_building/Wall_A_02.png', -1260, 100, 320, 320)
+        new Building('img/0_building/Wall_A_02.png', -1260, 100, 320, 320),
+        new Building('img/0_building/Wall_A_01.png', 7200, 100, 128, 320),
+        new Building('img/0_building/Wall_A_02.png', 7328, 100, 320, 320),
+        new Building('img/0_building/Wall_A_02.png', 7648, 100, 320, 320)
     ],
     [
         // 35 coins - easter egg

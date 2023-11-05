@@ -11,6 +11,12 @@ class Endboss extends CollidableObject {
         'img/4_enemie_boss_chicken/1_walk/G3.png'
     ];
     currentImage = 0;
+    offset = {
+        top: 40,
+        right: 15,
+        bottom: 10,
+        left: 15
+    };
 
     constructor() {
         super().loadImage('img/4_enemie_boss_chicken/1_walk/G4.png');

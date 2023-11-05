@@ -1,6 +1,5 @@
 class ChickenSmall extends CollidableObject {
-    3
-
+    
     y = 382;
     x = 800 + Math.random() * 4000; // Spawn
     height = 40;
@@ -12,6 +11,12 @@ class ChickenSmall extends CollidableObject {
         'img/3_enemies_chicken/chicken_small/1_walk/3_w.png'
     ];
     currentImage = 0;
+    offset = {
+        top: 5,
+        right: 5,
+        bottom: 5,
+        left: 5
+    };
 
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/3_w.png');

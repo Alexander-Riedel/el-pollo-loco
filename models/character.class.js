@@ -17,15 +17,15 @@ class Character extends CollidableObject {
         'img/2_character_pepe/2_walk/W-25.png'
     ];
     IMAGES_JUMPING = [
-        'img/2_character_pepe/3_jump/J-31.png',
-        'img/2_character_pepe/3_jump/J-32.png',
+        //'img/2_character_pepe/3_jump/J-31.png',
+        //'img/2_character_pepe/3_jump/J-32.png',
         'img/2_character_pepe/3_jump/J-33.png',
         'img/2_character_pepe/3_jump/J-34.png',
         'img/2_character_pepe/3_jump/J-35.png',
-        'img/2_character_pepe/3_jump/J-36.png',
-        'img/2_character_pepe/3_jump/J-37.png',
-        'img/2_character_pepe/3_jump/J-38.png',
-        'img/2_character_pepe/3_jump/J-39.png'
+        //'img/2_character_pepe/3_jump/J-36.png',
+        //'img/2_character_pepe/3_jump/J-37.png',
+        //'img/2_character_pepe/3_jump/J-38.png',
+        //'img/2_character_pepe/3_jump/J-39.png'
     ];
     IMAGES_DEAD = [
         'img/2_character_pepe/5_dead/D-51.png',
@@ -54,6 +54,13 @@ class Character extends CollidableObject {
         'img/2_character_pepe/1_idle/idle/I-10.png',
     ];
 
+    offset = {
+        top: 80,
+        right: 35,
+        bottom: 10,
+        left: 25
+    };
+
     constructor() {
         super().loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -76,7 +83,7 @@ class Character extends CollidableObject {
                 this.otherDirection = true;
                 //this.walking_sound.play();
             }
-            if ((this.world.keyboard.UP || this.world.keyboard.SPACE) && !this.isAboveGround()) {
+            if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
             }
             this.world.camera_x = -this.x + 160;
@@ -98,7 +105,7 @@ class Character extends CollidableObject {
 
         setInterval(() => {
             if (this.isDead()) {
-                
+                // death sound
             } else if (this.isHurt()) {
                 this.hurt_sound.volume = 0.2;
                 this.hurt_sound.play();
@@ -107,7 +114,7 @@ class Character extends CollidableObject {
             } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.world.character.y == 227) {
                 this.walking_sound.play();
             } else if (!this.isAboveGround()) {
-                
+
             }
         }, 1000 / 60);
 

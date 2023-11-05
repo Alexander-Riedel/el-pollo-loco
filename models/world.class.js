@@ -12,6 +12,10 @@ class World {
     statusBarBottles = new StatusBarBottles();
     statusBarEndboss = new StatusBarEndboss();
     throwableObjects = [];
+    coins = 0;
+    bottles = 0;
+    collect_coin_sound = new Audio('audio/coin.wav');
+    collect_bottle_sound = new Audio('audio/bottle.wav');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -29,6 +33,7 @@ class World {
     run() {
         setInterval(() => {
             this.checkCollisions();
+            this.checkCollisionsCollectibleObjects();
             this.checkThrowableObjects()
         }, 50);
     }
@@ -47,18 +52,32 @@ class World {
                 console.log('Collission with Character', 'Left Energy:', this.character.energy);
                 this.statusBarHealth.setPercentage(this.character.energy);
             }
-        })
+        });
     }
 
-    /*     checkCollisionsCollectibleObjects() {
-            this.level..forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    console.log('Collission with Character', 'Left Energy:', this.character.energy);
-                    this.statusBarHealth.setPercentage(this.character.energy);
-                }
-            })
-        } */
+    checkCollisionsCollectibleObjects() {
+        this.level.collectibleObjects.forEach((collectible) => {
+            if (collectible instanceof Coin && this.character.isColliding(collectible)) {
+                this.collectCoin();
+                this.level.collectibleObjects.splice(this.level.collectibleObjects.indexOf(collectible), 1);
+            } else if (collectible instanceof Bottle && this.character.isColliding(collectible)) {
+                this.collectBottle();
+                this.level.collectibleObjects.splice(this.level.collectibleObjects.indexOf(collectible), 1);
+            }
+        });
+    }
+
+    collectCoin() {
+        this.coins++;
+        this.collect_coin_sound.volume = 0.1;
+        this.collect_coin_sound.play();
+    }
+
+    collectBottle() {
+        this.bottle++;
+        this.collect_bottle_sound.volume = 0.1;
+        this.collect_bottle_sound.play();
+    }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -101,7 +120,8 @@ class World {
         }
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
+        //mo.drawFrame(this.ctx);
+        //mo.drawInnerFrame(this.ctx);
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);
