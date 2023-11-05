@@ -30,7 +30,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowableObjects()
-        }, 100);
+        }, 50);
     }
 
     checkThrowableObjects() {
@@ -45,7 +45,7 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 console.log('Collission with Character', 'Left Energy:', this.character.energy);
-                this.statusBar.setPercentage(this.character.energy);
+                this.statusBarHealth.setPercentage(this.character.energy);
             }
         })
     }
