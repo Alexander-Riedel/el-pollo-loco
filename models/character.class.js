@@ -56,9 +56,9 @@ class Character extends CollidableObject {
 
     offset = {
         top: 80,
-        right: 35,
-        bottom: 10,
-        left: 25
+        right: 30,
+        bottom: 5,
+        left: 20
     };
 
     constructor() {
@@ -117,6 +117,6 @@ class Character extends CollidableObject {
 
             }
         }, 1000 / 60);
-
     }
+    
 }

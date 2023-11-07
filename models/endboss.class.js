@@ -17,6 +17,7 @@ class Endboss extends CollidableObject {
         bottom: 10,
         left: 15
     };
+    collisionAdjustmentY = 60;
 
     constructor() {
         super().loadImage('img/4_enemie_boss_chicken/1_walk/G4.png');

@@ -15,8 +15,6 @@ class World {
     coins = 0;
     coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     bottles = 0;
-    collect_coin_sound = new Audio('audio/coin.wav');
-    collect_bottle_sound = new Audio('audio/bottle.wav');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -36,7 +34,7 @@ class World {
             this.checkCollisions();
             this.checkCollisionsCollectibleObjects();
             this.checkThrowableObjects()
-        }, 50);
+        }, 25);
     }
 
     checkThrowableObjects() {
@@ -49,9 +47,14 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                console.log('Collission with Character', 'Left Energy:', this.character.energy);
-                this.statusBarHealth.setPercentage(this.character.energy);
+                if (this.checkCharacterIsAboveEnemy(this.character, enemy) && this.character.isAboveGround()) {
+                    console.log('you hit the enemy');
+                    //this.killEnemy(enemy);
+                } else {
+                    this.character.hit();
+                    console.log('Collission with Character', 'Left Energy:', this.character.energy);
+                    this.statusBarHealth.setPercentage(this.character.energy);
+                }
             }
         });
     }
@@ -68,6 +71,12 @@ class World {
                 this.statusBarBottles.setPercentage(this.character.bottles * 10);
             }
         });
+    }
+
+    checkCharacterIsAboveEnemy(character, enemy) {
+        if (character.y + character.height - character.offset.top < enemy.y + enemy.height - enemy.offset.top - enemy.collisionAdjustmentY) {
+            return true;
+        }
     }
 
     draw() {
@@ -129,6 +138,5 @@ class World {
         this.ctx.restore();
         mo.x = mo.x * -1;
     }
-
 
 }

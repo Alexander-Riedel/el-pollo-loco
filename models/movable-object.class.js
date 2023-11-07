@@ -9,6 +9,8 @@ class MovableObject extends DrawableObject {
     coins = 0;
     bottles = 0;
     lastHit = 0;
+    collect_coin_sound = new Audio('audio/coin.wav');
+    collect_bottle_sound = new Audio('audio/bottle.wav');
 
     applyGravity() {
         setInterval(() => {
@@ -66,14 +68,14 @@ class MovableObject extends DrawableObject {
 
     collectCoin() {
         this.coins++;
-        //this.collect_coin_sound.volume = 0.1;
-        //this.collect_coin_sound.play();
+        this.collect_coin_sound.volume = 0.1;
+        this.collect_coin_sound.play();
     }
 
     collectBottle() {
         this.bottles++;
-        //this.collect_bottle_sound.volume = 0.1;
-        //this.collect_bottle_sound.play();
+        this.collect_bottle_sound.volume = 0.1;
+        this.collect_bottle_sound.play();
     }
 
 }

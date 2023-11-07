@@ -12,11 +12,12 @@ class ChickenSmall extends CollidableObject {
     ];
     currentImage = 0;
     offset = {
-        top: 5,
-        right: 5,
-        bottom: 5,
-        left: 5
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0
     };
+    collisionAdjustmentY = 75;
 
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/3_w.png');
@@ -26,9 +27,9 @@ class ChickenSmall extends CollidableObject {
     }
 
     animate() {
-        setInterval(() => {
+/*         setInterval(() => {
            this.moveLeft();
-        }, 1000 / 30);
+        }, 1000 / 30); */
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
