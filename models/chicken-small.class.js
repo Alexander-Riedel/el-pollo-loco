@@ -1,7 +1,7 @@
 class ChickenSmall extends CollidableObject {
 
     y = 382;
-    x = 800 + Math.random() * 4000; // Spawn
+    x = 800 // + Math.random() * 4000; // Spawn
     height = 40;
     width = 25;
     speed = 0.15 + Math.random() * (1 + Math.random()); // Speed
