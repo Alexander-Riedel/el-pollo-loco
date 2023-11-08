@@ -8,6 +8,7 @@ class Character extends CollidableObject {
     walking_sound = new Audio('audio/step.wav');
     jump_sound = new Audio('audio/jump.wav');
     hurt_sound = new Audio('audio/hurt.wav');
+    isDeathAnimationPlayed = false;
 
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
@@ -19,10 +20,10 @@ class Character extends CollidableObject {
     IMAGES_JUMPING = [
         //'img/2_character_pepe/3_jump/J-31.png',
         //'img/2_character_pepe/3_jump/J-32.png',
-        'img/2_character_pepe/3_jump/J-33.png',
+        //'img/2_character_pepe/3_jump/J-33.png',
         'img/2_character_pepe/3_jump/J-34.png',
         'img/2_character_pepe/3_jump/J-35.png',
-        //'img/2_character_pepe/3_jump/J-36.png',
+        'img/2_character_pepe/3_jump/J-36.png',
         //'img/2_character_pepe/3_jump/J-37.png',
         //'img/2_character_pepe/3_jump/J-38.png',
         //'img/2_character_pepe/3_jump/J-39.png'
@@ -90,8 +91,9 @@ class Character extends CollidableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isDead()) {
+            if (this.isDead() && !this.isDeathAnimationPlayed) {
                 this.playAnimation(this.IMAGES_DEAD);
+                this.isDeathAnimationPlayed = true;
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.isAboveGround()) {
@@ -118,5 +120,5 @@ class Character extends CollidableObject {
             }
         }, 1000 / 60);
     }
-    
+
 }

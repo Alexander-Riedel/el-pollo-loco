@@ -33,7 +33,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkCollisionsCollectibleObjects();
-            this.checkThrowableObjects()
+            this.checkThrowableObjects();
         }, 25);
     }
 
@@ -48,8 +48,8 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (this.checkCharacterIsAboveEnemy(this.character, enemy) && this.character.isAboveGround()) {
-                    console.log('you hit the enemy');
-                    //this.killEnemy(enemy);
+                    //console.log('you hit the enemy');
+                    this.killEnemy(enemy); 
                 } else {
                     this.character.hit();
                     console.log('Collission with Character', 'Left Energy:', this.character.energy);
@@ -57,6 +57,20 @@ class World {
                 }
             }
         });
+    }
+
+    checkCharacterIsAboveEnemy(character, enemy) {
+        if (character.y + character.height - character.offset.top < enemy.y + enemy.height - enemy.offset.top - enemy.collisionAdjustmentY) {
+            return true;
+        }
+    }
+
+    killEnemy(enemy) {
+        if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
+            enemy.playAnimation(enemy.IMAGES_DEAD);
+            enemy.isDead = true;
+            enemy.offset.top = 100;
+        }
     }
 
     checkCollisionsCollectibleObjects() {
@@ -71,12 +85,6 @@ class World {
                 this.statusBarBottles.setPercentage(this.character.bottles * 10);
             }
         });
-    }
-
-    checkCharacterIsAboveEnemy(character, enemy) {
-        if (character.y + character.height - character.offset.top < enemy.y + enemy.height - enemy.offset.top - enemy.collisionAdjustmentY) {
-            return true;
-        }
     }
 
     draw() {

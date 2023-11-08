@@ -39,10 +39,12 @@ class MovableObject extends DrawableObject {
     moveRight() {
         this.x += this.speed;
         this.otherDirection = false;
+        level1.moveBackgroundObjects(0, this.speed);
     }
 
     moveLeft() {
         this.x -= this.speed;
+        level1.moveBackgroundObjects(0, this.speed);
     }
 
     jump() {
