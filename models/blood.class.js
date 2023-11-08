@@ -157,7 +157,7 @@ class Blood extends MovableObject {
     ]; */
 
     constructor(x, y) {
-        super().loadImage('img/blood/1/1 _11.png');
+        super().loadImage('img/blood/1/1_11.png');
         this.x;
         this.y;
         this.height = 400 / 6;
