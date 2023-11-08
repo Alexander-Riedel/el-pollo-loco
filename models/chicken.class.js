@@ -20,6 +20,7 @@ class Chicken extends CollidableObject {
     };
     collisionAdjustmentY = 75;
     isDead = false;
+    dead_sound = new Audio('audio/chicken-small-dead.wav');
 
     constructor() {
         super().loadImage('img/3_enemies_chicken/chicken_normal/1_walk/3_w.png');
@@ -39,6 +40,10 @@ class Chicken extends CollidableObject {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 1000 / 10);
+    }
+
+    playDeadSound() {
+        this.dead_sound.play();
     }
 
 }

@@ -33,14 +33,22 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkCollisionsCollectibleObjects();
+        }, 25);
+
+        setInterval(() => {
             this.checkThrowableObjects();
         }, 25);
     }
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
-            let bottle = new ThrowableObject(this.character.x, this.character.y);
-            this.throwableObjects.push(bottle);
+            if (this.character.bottles > 0 && (!this.character.lastThrown || (Date.now() - this.character.lastThrown) > 500)) {
+                let bottle = new ThrowableObject(this.character.x, this.character.y);
+                this.throwableObjects.push(bottle);
+                this.character.lastThrown = Date.now(); // Setze die Zeit des letzten Wurfs
+                this.character.bottles--;
+                this.statusBarBottles.setPercentage(this.character.bottles * 10);
+            }
         }
     }
 
@@ -48,11 +56,9 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (this.checkCharacterIsAboveEnemy(this.character, enemy) && this.character.isAboveGround()) {
-                    //console.log('you hit the enemy');
                     this.killEnemy(enemy); 
                 } else {
                     this.character.hit();
-                    console.log('Collission with Character', 'Left Energy:', this.character.energy);
                     this.statusBarHealth.setPercentage(this.character.energy);
                 }
             }
@@ -68,6 +74,7 @@ class World {
     killEnemy(enemy) {
         if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
             enemy.playAnimation(enemy.IMAGES_DEAD);
+            enemy.playDeadSound();
             enemy.isDead = true;
             enemy.offset.top = 100;
         }
