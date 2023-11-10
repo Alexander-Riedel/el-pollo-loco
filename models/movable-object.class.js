@@ -18,7 +18,7 @@ class MovableObject extends DrawableObject {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
-        }, 1000 / 45)
+        }, 1000 / 40)
     }
 
     isAboveGround() {
@@ -36,7 +36,10 @@ class MovableObject extends DrawableObject {
         this.currentImage++;
     }
 
-    moveRight() {
+    moveRight(object) {
+        if (object == 'character') {
+            console.log('1');
+        }
         this.x += this.speed;
         this.otherDirection = false;
         level1.moveBackgroundObjects(0, this.speed);
@@ -47,8 +50,12 @@ class MovableObject extends DrawableObject {
         level1.moveBackgroundObjects(0, this.speed);
     }
 
-    jump() {
-        this.speedY = 30;
+    jump(speedY) {
+        if (speedY == undefined) {
+            this.speedY = 30;
+        } else {
+            this.speedY = speedY;
+        }
     }
 
     hit() {

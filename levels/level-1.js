@@ -189,9 +189,6 @@ const level1 = new Level(
         new Bottle(6550, 360),
         new Bottle(6570, 360)
 
-    ],
-    [
-        new Blood(),
     ]
 
 );

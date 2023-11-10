@@ -1,6 +1,8 @@
 class Blood extends MovableObject {
 
-/*     IMAGES_BLOOD_1 = [
+    y = 1;
+    x = 1;
+    IMAGES_BLOOD_1 = [
         'img/blood/1/1_0.png',
         'img/blood/1/1_1.png',
         'img/blood/1/1_2.png',
@@ -31,6 +33,7 @@ class Blood extends MovableObject {
         'img/blood/1/1_27.png',
         'img/blood/1/1_28.png'
     ];
+    /*
     IMAGES_BLOOD_2 = [
         'img/blood/2/1_0.png',
         'img/blood/2/1_1.png',
@@ -156,33 +159,35 @@ class Blood extends MovableObject {
         'img/blood/5/1_28.png'
     ]; */
 
-    constructor(x, y) {
-        super().loadImage('img/blood/1/1_11.png');
-        this.x;
-        this.y;
-        this.height = 400 / 6;
-        this.width = 400 / 6;
+    constructor(x, y, height, width) {
+        super().loadImage('img/blood/1/1_28.png');
+        this.loadImages(this.IMAGES_BLOOD_1);
+        this.x = x;
+        this.y = y;
+        this.height = height;
+        this.width = width;
         //this.throw();
+        this.animate();
     }
 
-/*     constructor(x, y) {
-        super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/3_w.png');
-        this.loadImages(this.IMAGES_BLOOD_1);
-        this.loadImages(this.IMAGES_BLOOD_2);
-        this.loadImages(this.IMAGES_BLOOD_3);
-        this.loadImages(this.IMAGES_BLOOD_4);
-        this.loadImages(this.IMAGES_BLOOD_5);
-        this.x = 20;
-        this.y = 80;
-        this.height = 158 / 4;
-        this.width = 595 / 4;
-        //this.animate();
-    } */
+    /*     constructor(x, y) {
+            super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/3_w.png');
+            this.loadImages(this.IMAGES_BLOOD_1);
+            this.loadImages(this.IMAGES_BLOOD_2);
+            this.loadImages(this.IMAGES_BLOOD_3);
+            this.loadImages(this.IMAGES_BLOOD_4);
+            this.loadImages(this.IMAGES_BLOOD_5);
+            this.x = 20;
+            this.y = 80;
+            this.height = 158 / 4;
+            this.width = 595 / 4;
+            //this.animate();
+        } */
 
     animate() {
-    setInterval(() => {
+        setInterval(() => {
             this.playAnimation(this.IMAGES_BLOOD_1);
-    }, 1000 / 5);
-}
+        }, 1000 / 20);
+    }
 
 }

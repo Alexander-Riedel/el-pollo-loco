@@ -2,7 +2,7 @@ class Character extends CollidableObject {
 
     y = 227 // 227
     height = 200;
-    speed = 7.5;
+    speed = 5;
     currentImage = 0;
     world;
     walking_sound = new Audio('audio/step.wav');
@@ -76,11 +76,11 @@ class Character extends CollidableObject {
     animate() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.moveRight();
+                this.moveRight('character');
                 //this.walking_sound.play();
             }
             if (this.world.keyboard.LEFT && this.x > this.world.level.level_start_x) {
-                this.moveLeft();
+                this.moveLeft('character');
                 this.otherDirection = true;
                 //this.walking_sound.play();
             }

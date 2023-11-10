@@ -15,6 +15,7 @@ class World {
     coins = 0;
     coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     bottles = 0;
+    blood = new Blood();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -45,7 +46,7 @@ class World {
             if (this.character.bottles > 0 && (!this.character.lastThrown || (Date.now() - this.character.lastThrown) > 500)) {
                 let bottle = new ThrowableObject(this.character.x, this.character.y);
                 this.throwableObjects.push(bottle);
-                this.character.lastThrown = Date.now(); // Setze die Zeit des letzten Wurfs
+                this.character.lastThrown = Date.now();
                 this.character.bottles--;
                 this.statusBarBottles.setPercentage(this.character.bottles * 10);
             }
@@ -77,6 +78,8 @@ class World {
             enemy.playDeadSound();
             enemy.isDead = true;
             enemy.offset.top = 100;
+            //new Blood(enemy.y, enemy.x, '75', '75');
+            this.character.jump('12');
         }
     }
 
@@ -113,7 +116,7 @@ class World {
         this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.blood);
+        this.addToMap(this.blood);
 
         this.ctx.translate(-this.camera_x, this.camery_y);
 
