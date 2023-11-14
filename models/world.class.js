@@ -17,7 +17,6 @@ class World {
     coinsTotal = 0;
     coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     bottles = 0;
-    blood = new Blood();
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -89,7 +88,6 @@ class World {
             enemy.playDeadSound();
             enemy.isDead = true;
             enemy.offset.top = 250;
-            new Blood(enemy.y, enemy.x, '75', '75');
             this.character.jump('15');
         }
     }
@@ -127,7 +125,6 @@ class World {
         this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
-        this.addToMap(this.blood);
 
         this.ctx.translate(-this.camera_x, this.camery_y);
 
@@ -170,14 +167,28 @@ class World {
     }
 
     loadNextLevel() {
-        //let levelNumber = this.getLevelNumber();
+
         setTimeout(() => {
             renderLevelDone();
             openSlider();
+
             setTimeout(() => {
-                closeSlider();
-            }, 5000);
-        }, 200);
+                this.resetLevel();
+                clearInterval();
+
+                setTimeout(() => {
+                    closeSlider();
+                }, 5000);
+
+            }, 2500);
+
+        }, 500);
+
+    }
+
+    resetLevel() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        init('2');
     }
 
 }

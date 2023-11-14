@@ -33,8 +33,10 @@ function closeSlider() {
 
 function renderLevelDone(level) {
     document.getElementById('slider-container').innerHTML = `
-        <div id="slider" class="open-task-container">
-            LEVEL ${level} COMPLETED!
+        <div id="slider">
+            <span>LEVEL</span>
+            <span>1</span>
+            <span>COMPLETED!</span>
         </div>
     `;
 }

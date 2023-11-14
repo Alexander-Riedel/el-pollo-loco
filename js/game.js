@@ -1,13 +1,13 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let levelNumber;
 
 
-function init() {
+function init(number) {
+    levelNumber = number;
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-
-    //console.log('My character is', world.character);
 }
 
 
@@ -35,8 +35,6 @@ window.addEventListener("keydown", (e) => {
     if(e.keyCode == 68) {
         keyboard.D = true;
     }
-
-    //console.log(e);
 });
 
 
@@ -64,6 +62,4 @@ window.addEventListener("keyup", (e) => {
     if(e.keyCode == 68) {
         keyboard.D = false;
     }
-
-    //console.log(e);
 });
