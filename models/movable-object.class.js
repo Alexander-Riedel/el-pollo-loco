@@ -3,7 +3,7 @@ class MovableObject extends DrawableObject {
     width = 95;
     speed = 3;
     otherDirection = false;
-    speedY = 0;
+    speedY = 25;
     acceleration = 2;
     energy = 100;
     coins = 0;
@@ -18,7 +18,7 @@ class MovableObject extends DrawableObject {
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
-        }, 1000 / 40)
+        }, 1000 / 45);
     }
 
     isAboveGround() {
@@ -37,22 +37,25 @@ class MovableObject extends DrawableObject {
     }
 
     moveRight(object) {
-        if (object == 'character') {
-            console.log('1');
+        if (object == 'character' && !this.isAboveGround() && this.y != 227 ) {
+            this.y = 227;
         }
         this.x += this.speed;
         this.otherDirection = false;
         level1.moveBackgroundObjects(0, this.speed);
     }
 
-    moveLeft() {
+    moveLeft(object) {
+        if (object == 'character' && !this.isAboveGround() && this.y != 227 ) {
+            this.y = 227;
+        }
         this.x -= this.speed;
         level1.moveBackgroundObjects(0, this.speed);
     }
 
     jump(speedY) {
         if (speedY == undefined) {
-            this.speedY = 30;
+            this.speedY = 25;
         } else {
             this.speedY = speedY;
         }

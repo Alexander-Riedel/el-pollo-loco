@@ -5,6 +5,7 @@ class DrawableObject {
     img;
     imageCache = {};
     currentImage = 0;
+    timer = 60;
 
     loadImage(path) {
         this.img = new Image();
@@ -41,6 +42,13 @@ class DrawableObject {
             ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.left - this.offset.right, this.height - this.offset.top - this.offset.bottom);
             ctx.stroke();
         }
+    }
+
+    timer() {
+        setInterval(() => {
+            this.timer--;
+            console.log(this.timer);
+        }, 1000);
     }
 
 }

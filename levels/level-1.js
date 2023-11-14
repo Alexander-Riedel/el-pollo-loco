@@ -1,17 +1,10 @@
 const level1 = new Level(
 
     [
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new ChickenSmall(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Chicken(),
-        new Endboss()
+        new Chicken(2000, 1),
+        new Chicken(3500, 1),
+        new Chicken(5000, 1),
+        new Endboss(7000, 0.5)
     ],
     [
         new Cloud('img/5_background/layers/4_clouds/1.png', 0),
@@ -126,19 +119,19 @@ const level1 = new Level(
         new Coin(-600, 300),
 
         // 1 coin 
-        new Coin(500, 100),
+        new Coin(500, 150),
 
         // 3 coins
-        new Coin(1000, 150),
-        new Coin(1050, 100),
-        new Coin(1100, 150),
+        new Coin(1000, 200),
+        new Coin(1050, 150),
+        new Coin(1100, 200),
 
         // 5 coins
+        new Coin(1650, 250),
         new Coin(1650, 200),
-        new Coin(1650, 150),
-        new Coin(1700, 100),
+        new Coin(1700, 150),
         new Coin(1750, 200),
-        new Coin(1750, 150),
+        new Coin(1750, 250),
 
         // 4 coins
         new Coin(2300, 150),
@@ -159,18 +152,18 @@ const level1 = new Level(
         new Coin(4050, 150),
 
         // 1 coin
-        new Coin(4550, 100),
+        new Coin(4550, 150),
 
         // 2 coins
         new Coin(5050, 150),
         new Coin(5100, 150),
 
         // 3 coins
-        new Coin(5600, 150),
-        new Coin(5650, 100),
-        new Coin(5700, 150),
+        new Coin(5600, 200),
+        new Coin(5650, 150),
+        new Coin(5700, 200),
 
-        // bottles
+        /*// bottles
         new Bottle(750, 360),
         new Bottle(1350, 360),
         new Bottle(1400, 360),
@@ -181,14 +174,11 @@ const level1 = new Level(
         new Bottle(4800, 360),
         new Bottle(5400, 360),
         new Bottle(5850, 360),
-        new Bottle(5870, 360),
         new Bottle(5910, 360),
         new Bottle(6050, 360),
-        new Bottle(6250, 360),
         new Bottle(6270, 360),
-        new Bottle(6550, 360),
-        new Bottle(6570, 360)
-
+        new Bottle(6570, 360),
+        new Bottle(6900, 360)*/
     ]
 
 );

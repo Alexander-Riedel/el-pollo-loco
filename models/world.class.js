@@ -1,5 +1,6 @@
 class World {
 
+    levelNumber = 1;
     level = level1;
     character = new Character();
     canvas;
@@ -13,6 +14,7 @@ class World {
     statusBarEndboss = new StatusBarEndboss();
     throwableObjects = [];
     coins = 0;
+    coinsTotal = 0;
     coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     bottles = 0;
     blood = new Blood();
@@ -24,6 +26,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.calculateCoinsTotal();
     }
 
     setWorld() {
@@ -39,6 +42,10 @@ class World {
         setInterval(() => {
             this.checkThrowableObjects();
         }, 25);
+    }
+
+    calculateCoinsTotal() {
+        this.coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     }
 
     checkThrowableObjects() {
@@ -57,7 +64,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (this.checkCharacterIsAboveEnemy(this.character, enemy) && this.character.isAboveGround()) {
-                    this.killEnemy(enemy); 
+                    this.killEnemy(enemy);
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);
@@ -73,13 +80,17 @@ class World {
     }
 
     killEnemy(enemy) {
-        if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
+        if (enemy instanceof ChickenSmall || enemy instanceof Chicken || enemy instanceof Endboss) {
+            if (enemy instanceof Endboss) {
+                this.statusBarEndboss.setPercentage(0);
+                this.loadNextLevel();
+            }
             enemy.playAnimation(enemy.IMAGES_DEAD);
             enemy.playDeadSound();
             enemy.isDead = true;
-            enemy.offset.top = 100;
-            //new Blood(enemy.y, enemy.x, '75', '75');
-            this.character.jump('12');
+            enemy.offset.top = 250;
+            new Blood(enemy.y, enemy.x, '75', '75');
+            this.character.jump('15');
         }
     }
 
@@ -156,6 +167,17 @@ class World {
     flipImageBack(mo) {
         this.ctx.restore();
         mo.x = mo.x * -1;
+    }
+
+    loadNextLevel() {
+        //let levelNumber = this.getLevelNumber();
+        setTimeout(() => {
+            renderLevelDone();
+            openSlider();
+            setTimeout(() => {
+                closeSlider();
+            }, 5000);
+        }, 200);
     }
 
 }

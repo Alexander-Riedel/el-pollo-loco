@@ -4,11 +4,14 @@ class Endboss extends CollidableObject {
     x = 6500; // Spawn
     height = 200;
     width = 120;
-    speed = 0.30 + Math.random(); // Speed
+    speed = 10;
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
         'img/4_enemie_boss_chicken/1_walk/G3.png'
+    ];
+    IMAGES_DEAD = [
+        'img/4_enemie_boss_chicken/5_dead/G26.png'
     ];
     currentImage = 0;
     offset = {
@@ -18,24 +21,36 @@ class Endboss extends CollidableObject {
         left: 15
     };
     collisionAdjustmentY = 60;
+    isDead = false;
+    dead_sound = new Audio('audio/peep.wav');
+    walkingInterval;
 
-    constructor() {
+    constructor(x, speed) {
         super().loadImage('img/4_enemie_boss_chicken/1_walk/G4.png');
         this.loadImages(this.IMAGES_WALKING);
+        this.loadImages(this.IMAGES_DEAD);
+        this.x = x;
+        this.speed = speed;
 
         this.animate();
     }
 
     animate() {
-        //this.moveLeft();
+        this.walkingInterval = setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 30);
 
-        /*setInterval(() => {
-            let i = this.currentImage++ % this.IMAGES_WALKING.length;
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
-        }, 1000 / 10);*/
+        setInterval(() => {
+            if (this.isDead == false) {
+                this.playAnimation(this.IMAGES_WALKING);
+            }
+        }, 1000 / 10);
     }
 
+    playDeadSound() {
+        this.dead_sound.play();
+        clearInterval(this.walkingInterval);
+        this.y = 300;
+    }
 
 }

@@ -1,4 +1,5 @@
 class Level {
+    
     clouds;
     backgroundObjects;
     enemies;
@@ -21,5 +22,6 @@ class Level {
             }
         });
     }
+    
 }
 
