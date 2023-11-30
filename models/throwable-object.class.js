@@ -12,14 +12,21 @@ class ThrowableObject extends MovableObject {
     }
 
     throw() {
-        this.speedY = 18;
+        this.speedY = 20;
         this.applyGravity();
         this.throw_sound.volume = 0.1;
         this.throw_sound.play();
         setInterval(() => {
-            this.x += 12;
+            this.x += 8;
 
         }, 1000 / 60);
+    }
+
+    isCollidingWithBottle(mo) {
+        return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&       // R -> L
+            this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&         // T -> B
+            this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&            // L -> R
+            this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom              // B -> T
     }
 
 }

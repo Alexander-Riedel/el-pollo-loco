@@ -11,6 +11,12 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
     collect_coin_sound = new Audio('audio/coin.wav');
     collect_bottle_sound = new Audio('audio/bottle.wav');
+    offset = {
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+    };
 
     applyGravity() {
         setInterval(() => {

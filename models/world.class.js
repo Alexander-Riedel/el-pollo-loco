@@ -35,11 +35,16 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkCollisionsCollectibleObjects();
+            this.checkTrowableCollisions();
         }, 25);
 
         setInterval(() => {
             this.checkThrowableObjects();
         }, 25);
+
+        setInterval(() => {
+            this.deleteBottle();
+        }, 1000);
     }
 
     calculateCoinsTotal() {
@@ -69,6 +74,25 @@ class World {
                 }
             }
         });
+    }
+
+    checkTrowableCollisions() {
+        this.throwableObjects.forEach((bottle) => {
+            this.level.enemies.forEach((enemy) => {
+                if (bottle.isCollidingWithBottle(enemy)) {
+                    console.log('Treffer')
+                    this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+                    enemy.playAnimation(enemy.IMAGES_DEAD);
+                    enemy.playDeadSound();
+                    enemy.isDead = true;
+                    enemy.offset.top = 250;
+                }
+            });
+        });
+    }
+
+    deleteBottle() {
+        this.throwableObjects = this.throwableObjects.filter(throwableObject => throwableObject.y <= 480);
     }
 
     checkCharacterIsAboveEnemy(character, enemy) {
@@ -193,6 +217,6 @@ class World {
 
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
-      }
+    }
 
 }
