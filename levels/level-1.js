@@ -163,7 +163,7 @@ const level1 = new Level(
         new Coin(5650, 150),
         new Coin(5700, 200),
 
-        /*// bottles
+        // bottles
         new Bottle(750, 360),
         new Bottle(1350, 360),
         new Bottle(1400, 360),
@@ -178,7 +178,7 @@ const level1 = new Level(
         new Bottle(6050, 360),
         new Bottle(6270, 360),
         new Bottle(6570, 360),
-        new Bottle(6900, 360)*/
+        new Bottle(6900, 360)
     ]
 
 );

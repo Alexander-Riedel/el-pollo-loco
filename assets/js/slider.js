@@ -31,11 +31,11 @@ function closeSlider() {
 }
 
 
-function renderLevelDone(level) {
+function renderLevelDone() {
     document.getElementById('slider-container').innerHTML = `
         <div id="slider">
             <span>LEVEL</span>
-            <span>1</span>
+            <span>${levelNumber}</span>
             <span>COMPLETED!</span>
         </div>
     `;

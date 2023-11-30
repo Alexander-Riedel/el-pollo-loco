@@ -186,8 +186,9 @@ class World {
     }
 
     resetLevel() {
+        levelNumber++;
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        init('2');
+        init(levelNumber);
     }
 
     clearAllIntervals() {
