@@ -1,6 +1,5 @@
 class World {
 
-    levelNumber = 1;
     level = level1;
     character = new Character();
     canvas;
@@ -173,8 +172,8 @@ class World {
             openSlider();
 
             setTimeout(() => {
+                this.clearAllIntervals();
                 this.resetLevel();
-                clearInterval();
 
                 setTimeout(() => {
                     closeSlider();
@@ -190,5 +189,9 @@ class World {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         init('2');
     }
+
+    clearAllIntervals() {
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
+      }
 
 }

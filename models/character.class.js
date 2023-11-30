@@ -1,6 +1,6 @@
 class Character extends CollidableObject {
 
-    y = 227 // 227
+    y = 227; // 227
     height = 200;
     speed = 5;
     currentImage = 0;
