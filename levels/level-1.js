@@ -3,8 +3,10 @@ const level1 = new Level(
     [
         new Chicken(2000, 1),
         new Chicken(3500, 1),
-        new Chicken(5000, 1),
-        new Endboss(7000, 0.5)
+        new Chicken(5000, 1)
+    ],
+    [
+        new Endboss(7000, 0.5, 20)
     ],
     [
         new Cloud('img/5_background/layers/4_clouds/1.png', 0),

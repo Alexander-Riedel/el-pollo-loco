@@ -23,16 +23,18 @@ class Endboss extends CollidableObject {
     collisionAdjustmentY = 60;
     isDead = false;
     dead_sound = new Audio('audio/peep.wav');
+    hit_sound = new Audio('audio/hit.wav');
     walkingInterval;
+    endbossEnergy;
 
-    constructor(x, speed) {
+    constructor(x, speed, energy) {
         super().loadImage('img/4_enemie_boss_chicken/1_walk/G4.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
         this.x = x;
         this.speed = speed;
-
         this.animate();
+        this.endbossEnergy = energy;
     }
 
     animate() {

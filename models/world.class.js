@@ -74,6 +74,16 @@ class World {
                 }
             }
         });
+        this.level.endboss.forEach((endboss) => {
+            if (this.character.isColliding(endboss)) {
+                if (this.checkCharacterIsAboveEnemy(this.character, endboss) && this.character.isAboveGround()) {
+                    this.hitEnemy(endboss);
+                } else {
+                    this.character.hit();
+                    this.statusBarHealth.setPercentage(this.character.energy);
+                }
+            }
+        });
     }
 
     checkTrowableCollisions() {
@@ -86,6 +96,16 @@ class World {
                     enemy.playDeadSound();
                     enemy.isDead = true;
                     enemy.offset.top = 250;
+                }
+            });
+            this.level.endboss.forEach((endboss) => {
+                if (bottle.isCollidingWithBottle(endboss)) {
+                    console.log('Treffer')
+                    this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+                    endboss.playAnimation(endboss.IMAGES_DEAD);
+                    endboss.playDeadSound();
+                    endboss.isDead = true;
+                    endboss.offset.top = 250;
                 }
             });
         });
@@ -110,10 +130,11 @@ class World {
     }
 
     hitEndboss(enemy) {
-        this.statusBarEndboss.setPercentage(0);
-        this.loadNextLevel();
-        if (this.statusBarEndboss.percentage == 0) {
+        this.statusBarEndboss.setPercentage(enemy.endbossEnergy - 20);
+        this.endbossEnergy = enemy.endbossEnergy - 20;
+        if (this.endbossEnergy == 0) {
             this.killEnemy(enemy);
+            this.loadNextLevel();
         }
     }
 
@@ -158,6 +179,7 @@ class World {
         this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.endboss);
 
         this.ctx.translate(-this.camera_x, this.camery_y);
 
@@ -179,8 +201,8 @@ class World {
         }
 
         mo.draw(this.ctx);
-        //mo.drawFrame(this.ctx);
-        //mo.drawInnerFrame(this.ctx);
+        mo.drawFrame(this.ctx);
+        mo.drawInnerFrame(this.ctx);
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);

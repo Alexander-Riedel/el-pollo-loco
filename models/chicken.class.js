@@ -13,10 +13,10 @@ class Chicken extends CollidableObject {
     IMAGES_DEAD = ['img/3_enemies_chicken/chicken_normal/2_dead/dead.png'];
     currentImage = 0;
     offset = {
-        top: 5,
-        right: 5,
-        bottom: 5,
-        left: 5
+        top: -5,
+        right: -5,
+        bottom: -5,
+        left: -5
     };
     collisionAdjustmentY = 75;
     isDead = false;
