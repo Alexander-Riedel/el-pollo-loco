@@ -77,12 +77,12 @@ class Character extends CollidableObject {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight('character');
-                //this.walking_sound.play();
+                this.walking_sound.play();
             }
             if (this.world.keyboard.LEFT && this.x > this.world.level.level_start_x) {
                 this.moveLeft('character');
                 this.otherDirection = true;
-                //this.walking_sound.play();
+                this.walking_sound.play();
             }
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();

@@ -67,7 +67,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
                 if (this.checkCharacterIsAboveEnemy(this.character, enemy) && this.character.isAboveGround()) {
-                    this.killEnemy(enemy);
+                    this.hitEnemy(enemy);
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);
@@ -101,18 +101,28 @@ class World {
         }
     }
 
-    killEnemy(enemy) {
-        if (enemy instanceof ChickenSmall || enemy instanceof Chicken || enemy instanceof Endboss) {
-            if (enemy instanceof Endboss) {
-                this.statusBarEndboss.setPercentage(0);
-                this.loadNextLevel();
-            }
-            enemy.playAnimation(enemy.IMAGES_DEAD);
-            enemy.playDeadSound();
-            enemy.isDead = true;
-            enemy.offset.top = 250;
-            this.character.jump('15');
+    hitEnemy(enemy) {
+        if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
+            this.killEnemy(enemy);
+        } else if (enemy instanceof Endboss) {
+            this.hitEndboss(enemy);
         }
+    }
+
+    hitEndboss(enemy) {
+        this.statusBarEndboss.setPercentage(0);
+        this.loadNextLevel();
+        if (this.statusBarEndboss.percentage == 0) {
+            this.killEnemy(enemy);
+        }
+    }
+
+    killEnemy(enemy) {
+        enemy.playAnimation(enemy.IMAGES_DEAD);
+        enemy.playDeadSound();
+        enemy.isDead = true;
+        enemy.offset.top = 250;
+        this.character.jump('15');
     }
 
     checkCollisionsCollectibleObjects() {

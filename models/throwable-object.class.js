@@ -19,10 +19,8 @@ class ThrowableObject extends MovableObject {
         this.throw_sound.play();
         setInterval(() => {
             if (this.direction == true) {
-                console.log('links');
                 this.x -= 8;
             } else {
-                console.log('rechts');
                 this.x += 8;
             }
             //this.x += 8;

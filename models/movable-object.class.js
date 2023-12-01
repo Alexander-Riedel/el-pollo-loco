@@ -43,7 +43,7 @@ class MovableObject extends DrawableObject {
     }
 
     moveRight(object) {
-        if (object == 'character' && !this.isAboveGround() && this.y != 227 ) {
+        if (object == 'character' && !this.isAboveGround() && this.y != 227) {
             this.y = 227;
         }
         this.x += this.speed;
@@ -52,7 +52,7 @@ class MovableObject extends DrawableObject {
     }
 
     moveLeft(object) {
-        if (object == 'character' && !this.isAboveGround() && this.y != 227 ) {
+        if (object == 'character' && !this.isAboveGround() && this.y != 227) {
             this.y = 227;
         }
         this.x -= this.speed;
