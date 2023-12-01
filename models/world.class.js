@@ -54,7 +54,7 @@ class World {
     checkThrowableObjects() {
         if (this.keyboard.D) {
             if (this.character.bottles > 0 && (!this.character.lastThrown || (Date.now() - this.character.lastThrown) > 500)) {
-                let bottle = new ThrowableObject(this.character.x, this.character.y);
+                let bottle = new ThrowableObject(this.character.x, this.character.y, this.character.otherDirection);
                 this.throwableObjects.push(bottle);
                 this.character.lastThrown = Date.now();
                 this.character.bottles--;

@@ -2,13 +2,14 @@ class ThrowableObject extends MovableObject {
 
     throw_sound = new Audio('audio/throw.wav');
 
-    constructor(x, y) {
+    constructor(x, y, direction) {
         super().loadImage('img/6_salsa_bottle/salsa_bottle.png');
         this.x = x + 30;
         this.y = y + 70;
         this.height = 400 / 6;
         this.width = 400 / 6;
         this.throw();
+        this.direction = direction;
     }
 
     throw() {
@@ -17,8 +18,14 @@ class ThrowableObject extends MovableObject {
         this.throw_sound.volume = 0.1;
         this.throw_sound.play();
         setInterval(() => {
-            this.x += 8;
-
+            if (this.direction == true) {
+                console.log('links');
+                this.x -= 8;
+            } else {
+                console.log('rechts');
+                this.x += 8;
+            }
+            //this.x += 8;
         }, 1000 / 60);
     }
 
