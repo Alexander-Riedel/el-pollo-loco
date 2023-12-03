@@ -59,9 +59,10 @@ class MovableObject extends DrawableObject {
         level1.moveBackgroundObjects(0, this.speed);
     }
 
-    jump(speedY) {
-        if (speedY == undefined) {
+    jump(speedX, speedY) {
+        if (speedY == undefined || speedX == undefined) {
             this.speedY = 25;
+            this.speedX = 25;
         } else {
             this.speedY = speedY;
         }
