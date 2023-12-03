@@ -102,10 +102,13 @@ class World {
                 if (bottle.isCollidingWithBottle(endboss)) {
                     console.log('Treffer')
                     this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
-                    endboss.playAnimation(endboss.IMAGES_DEAD);
-                    endboss.playDeadSound();
-                    endboss.isDead = true;
-                    endboss.offset.top = 250;
+                    this.statusBarEndboss.setPercentage(endboss.endbossEnergy - 20);
+                    endboss.endbossEnergy = endboss.endbossEnergy - 20;
+                    console.log(endboss);
+                    if (endboss.endbossEnergy == 0) {
+                        this.killEnemy(endboss);
+                        this.loadNextLevel();
+                    }
                 }
             });
         });
@@ -123,6 +126,7 @@ class World {
 
     hitEnemy(enemy) {
         if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
+            this.character.jump('15');
             this.killEnemy(enemy);
         } else if (enemy instanceof Endboss) {
             this.hitEndboss(enemy);
@@ -143,7 +147,6 @@ class World {
         enemy.playDeadSound();
         enemy.isDead = true;
         enemy.offset.top = 250;
-        this.character.jump('15');
     }
 
     checkCollisionsCollectibleObjects() {
