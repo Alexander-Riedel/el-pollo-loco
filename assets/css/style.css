@@ -14,10 +14,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
 }
 
 canvas {
+    display: block;
     background-color: #000000;
+}
+
+/* Smartphones */
+@media only screen and (max-width: 720px) {
+    canvas {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-height: 480px) {
+    canvas {
+        height: 100vh;
+    }
 }
