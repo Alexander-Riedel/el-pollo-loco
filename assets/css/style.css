@@ -11,9 +11,55 @@
 
 body {
     margin: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    background-image: url('../../img/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.keys {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ccb800;
+    text-shadow: 1px 2px 3px #000000;
+}
+
+.interaction-buttons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+button {
+    background: linear-gradient(350deg, #cc9600 45%, #ccb800 100%);
+    padding: 25px 50px;
+    border: none;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 8px;
+    transition: 500ms;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+}
+
+button:hover {
+    transition: 603ms;
+    padding: 35px 65px;
 }
 
 canvas {
@@ -25,6 +71,11 @@ canvas {
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
+    }
+
+    #start-screen {
+        width: 100%;
+        background-size: cover;
     }
 }
 

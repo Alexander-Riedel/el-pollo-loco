@@ -4,6 +4,7 @@ class Level {
     enemies;
     endboss;
     clouds;
+    buildings;
     level_start_x = -912;
     level_end_x = 7200;
 

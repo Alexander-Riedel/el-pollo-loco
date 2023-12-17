@@ -35,11 +35,21 @@
     <script src="assets/js/slider.js"></script>
 </head>
 
-<body onload="init('1');">
+<body>
 
-    <h1>El pollo loco</h1>
+    <div id="game-container">
+        <img src="./img/start.jpg" id="start-screen" width="720" height="480" alt="Start Screen">
+        <canvas id="canvas" class="d-none" width="720" height="480"></canvas>
+        <div id="keys" class="keys">
+            <div>RUN = LEFT / RIGHT</div>
+            <div>JUMP = SPACE</div>
+            <div>THROW = D</div>
+        </div>
+    </div>
 
-    <canvas id="canvas" width="720" height="480"></canvas>
+    <div id="interaction-buttons" class="interaction-buttons">
+        <button onclick="init(1);">START</button>
+    </div>
 
     <div id="screen-center" class="d-none">
         <div id="slider-bg" class="d-none" onclick="closeSlider()"></div>

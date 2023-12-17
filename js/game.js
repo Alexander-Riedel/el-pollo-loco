@@ -6,7 +6,11 @@ let levelNumber;
 
 function init(number) {
     levelNumber = number;
+    document.getElementById('start-screen').classList.add('d-none');
+    document.getElementById('interaction-buttons').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
     canvas = document.getElementById('canvas');
+    initLevel();
     world = new World(canvas, keyboard);
 }
 

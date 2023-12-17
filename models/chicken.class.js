@@ -4,7 +4,7 @@ class Chicken extends CollidableObject {
     x = 3000 + Math.random() * 3800; // Spawn
     height = 50;
     width = 40;
-    speed = 0.30;
+    //speed = 10 * 0.15 + Math.random() * 25; // Speed
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_normal/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_normal/1_walk/2_w.png',

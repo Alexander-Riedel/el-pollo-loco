@@ -23,7 +23,6 @@ class ThrowableObject extends MovableObject {
             } else {
                 this.x += 8;
             }
-            //this.x += 8;
         }, 1000 / 60);
     }
 

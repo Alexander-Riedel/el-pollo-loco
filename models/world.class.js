@@ -90,7 +90,6 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
                 if (bottle.isCollidingWithBottle(enemy)) {
-                    console.log('Treffer')
                     this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
                     enemy.playAnimation(enemy.IMAGES_DEAD);
                     enemy.playDeadSound();
@@ -100,12 +99,10 @@ class World {
             });
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isCollidingWithBottle(endboss)) {
-                    console.log('Treffer')
                     this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
-                    this.statusBarEndboss.setPercentage(endboss.endbossEnergy - 20);
-                    endboss.endbossEnergy = endboss.endbossEnergy - 20;
-                    console.log(endboss);
-                    if (endboss.endbossEnergy == 0) {
+                    this.statusBarEndboss.setPercentage(endboss.energy - 20);
+                    endboss.energy = endboss.energy - 20;
+                    if (endboss.energy == 0) {
                         this.killEnemy(endboss);
                         this.loadNextLevel();
                     }
@@ -126,18 +123,21 @@ class World {
 
     hitEnemy(enemy) {
         if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
-            this.character.jump('15');
+            this.character.jump(15, 0);
             this.killEnemy(enemy);
         } else if (enemy instanceof Endboss) {
+            this.character.jump(15, 0);
             this.hitEndboss(enemy);
         }
     }
 
-    hitEndboss(enemy) {
-        this.statusBarEndboss.setPercentage(enemy.endbossEnergy - 20);
-        this.endbossEnergy = enemy.endbossEnergy - 20;
-        if (this.endbossEnergy == 0) {
-            this.killEnemy(enemy);
+    hitEndboss(endboss) {
+        this.statusBarEndboss.setPercentage(endboss.energy - 20);
+        endboss.energy = endboss.energy - 20;
+        //this.character.x -= this.character.speedX;
+        //this.character.speedX -= this.character.acceleration;
+        if (endboss.energy == 0) {
+            this.killEnemy(endboss);
             this.loadNextLevel();
         }
     }
@@ -225,29 +225,16 @@ class World {
     }
 
     loadNextLevel() {
-
         setTimeout(() => {
             renderLevelDone();
             openSlider();
-
             setTimeout(() => {
                 this.clearAllIntervals();
-                this.resetLevel();
-
                 setTimeout(() => {
                     closeSlider();
                 }, 5000);
-
             }, 2500);
-
         }, 500);
-
-    }
-
-    resetLevel() {
-        levelNumber++;
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        init(levelNumber);
     }
 
     clearAllIntervals() {

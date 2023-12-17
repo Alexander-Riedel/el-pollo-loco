@@ -3,7 +3,8 @@ class MovableObject extends DrawableObject {
     width = 95;
     speed = 3;
     otherDirection = false;
-    speedY = 25;
+    speedY = 0;
+    speedX = 0;
     acceleration = 2;
     energy = 100;
     coins = 0;
@@ -48,7 +49,7 @@ class MovableObject extends DrawableObject {
         }
         this.x += this.speed;
         this.otherDirection = false;
-        level1.moveBackgroundObjects(0, this.speed);
+        //level1.moveBackgroundObjects(0, this.speed);
     }
 
     moveLeft(object) {
@@ -56,15 +57,16 @@ class MovableObject extends DrawableObject {
             this.y = 227;
         }
         this.x -= this.speed;
-        level1.moveBackgroundObjects(0, this.speed);
+        //level1.moveBackgroundObjects(0, this.speed);
     }
 
-    jump(speedX, speedY) {
+    jump(speedY, speedX) {
         if (speedY == undefined || speedX == undefined) {
             this.speedY = 25;
-            this.speedX = 25;
+            this.speedX = 0;
         } else {
             this.speedY = speedY;
+            this.speedX = speedX;
         }
     }
 
