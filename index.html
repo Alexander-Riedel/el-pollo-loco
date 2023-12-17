@@ -39,7 +39,9 @@
 
     <div id="game-container">
         <img src="./img/start.jpg" id="start-screen" width="720" height="480" alt="Start Screen">
-        <canvas id="canvas" class="d-none" width="720" height="480"></canvas>
+        <canvas id="canvas" class="d-none" width="720" height="480">
+            Your browser does not support canvas element.
+        </canvas>
         <div id="keys" class="keys">
             <div>RUN = LEFT / RIGHT</div>
             <div>JUMP = SPACE</div>
@@ -49,6 +51,17 @@
 
     <div id="interaction-buttons" class="interaction-buttons">
         <button onclick="init(1);">START</button>
+    </div>
+
+    <div id="mobile-buttons" class="mobile-buttons">
+        <div>
+            <button id="left">LINKS</button>
+            <button id="right">RECHTS</button>
+        </div>
+        <div>
+            <button id="action">THROW</button>
+            <button id="space">SPACE</button>
+        </div>
     </div>
 
     <div id="screen-center" class="d-none">
