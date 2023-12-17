@@ -44,7 +44,7 @@ body {
 
 }
 
-button {
+#start-button {
     background: linear-gradient(350deg, #cc9600 45%, #ccb800 100%);
     padding: 25px 50px;
     border: none;
@@ -57,9 +57,56 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    transition: 603ms;
-    padding: 35px 65px;
+.mobile-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 720px;
+}
+
+.mobile-left {
+    display: flex;
+}
+
+.mobile-right {
+    display: flex;
+}
+
+#left {
+    background: unset;
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-image: url(../../img/keys/left.png);
+    background-size: cover;
+}
+
+#right {
+    background: unset;
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-image: url(../../img/keys/right.png);
+    background-size: cover;
+}
+
+#space {
+    background: unset;
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-image: url(../../img/keys/left.png);
+    transform: rotate(90deg);
+    background-size: cover;
+}
+
+#action {
+    background: unset;
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-image: url(../../img/keys/right.png);
+    transform: rotate(90deg);
+    background-size: cover;
 }
 
 canvas {

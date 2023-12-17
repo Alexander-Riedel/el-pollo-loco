@@ -71,18 +71,22 @@ window.addEventListener("keyup", (e) => {
 
 window.addEventListener("touchstart", (e) => {
     document.getElementById('right').addEventListener('touchstart', (e) => {
+        e.preventDefault();
         keyboard.RIGHT = true;
     })
 
     document.getElementById('left').addEventListener('touchstart', (e) => {
+        e.preventDefault();
         keyboard.LEFT = true;
     })
 
     document.getElementById('space').addEventListener('touchstart', (e) => {
+        e.preventDefault();
         keyboard.SPACE = true;
     })
 
     document.getElementById('action').addEventListener('touchstart', (e) => {
+        e.preventDefault();
         keyboard.D = true;
     })
 });
@@ -90,18 +94,22 @@ window.addEventListener("touchstart", (e) => {
 
 window.addEventListener("touchend", (e) => {
     document.getElementById('right').addEventListener('touchend', (e) => {
+        e.preventDefault();
         keyboard.RIGHT = false;
     })
 
     document.getElementById('left').addEventListener('touchend', (e) => {
+        e.preventDefault();
         keyboard.LEFT = false;
     })
 
     document.getElementById('space').addEventListener('touchend', (e) => {
+        e.preventDefault();
         keyboard.SPACE = false;
     })
 
     document.getElementById('action').addEventListener('touchend', (e) => {
+        e.preventDefault();
         keyboard.D = false;
     })
 });
