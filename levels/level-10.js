@@ -1,16 +1,16 @@
-function initLevel2() {
+function initLevel10() {
 
     level1 = new Level(
         [
-            new Chicken(2200, 1),
-            new Chicken(2800, 1),
-            new Chicken(3000, 1),
-            new ChickenSmall(5000, 1),
-            new ChickenSmall(5200, 1),
-            new ChickenSmall(6000, 1)
+            new Chicken(2000, 1),
+            new Chicken(3500, 1),
+            new Chicken(5000, 1),
+            new ChickenSmall(4000, 2),
+            new ChickenSmall(4400, 2),
+            new ChickenSmall(4800, 2)
         ],
         [
-            new Endboss(7000, 140, 2.5, 100, 1.5)
+            new Endboss(7000, 50, 5, 100, 2)
         ],
         [
             new Cloud('img/5_background/layers/4_clouds/1.png', 0),

@@ -1,7 +1,7 @@
 class ChickenSmall extends CollidableObject {
 
     y = 382;
-    x = 5000 + Math.random() * 4000; // Spawn
+    //x = 5000 + Math.random() * 4000; // Spawn
     height = 40;
     width = 25;
     //speed = 10 * 0.15 + Math.random() * 25; // Speed
@@ -13,14 +13,15 @@ class ChickenSmall extends CollidableObject {
     IMAGES_DEAD = ['img/3_enemies_chicken/chicken_small/2_dead/dead.png'];
     currentImage = 0;
     offset = {
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0
+        top: -5,
+        right: -5,
+        bottom: -5,
+        left: -5
     };
     collisionAdjustmentY = 75;
     isDead = false;
     dead_sound = new Audio('audio/chicken-dead.wav');
+    walkingInterval;
 
     constructor(x, speed) {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/3_w.png');
@@ -33,9 +34,9 @@ class ChickenSmall extends CollidableObject {
     }
 
     animate() {
-               setInterval(() => {
-                   this.moveLeft();
-                }, 1000 / 30); 
+        this.walkingInterval = setInterval(() => {
+            this.moveLeft();
+        }, 1000 / 30);
 
         setInterval(() => {
             if (this.isDead == false) {
@@ -46,6 +47,7 @@ class ChickenSmall extends CollidableObject {
 
     playDeadSound() {
         this.dead_sound.play();
+        clearInterval(this.walkingInterval);
     }
 
 }

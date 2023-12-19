@@ -1,10 +1,10 @@
 class Endboss extends CollidableObject {
 
-    y = 230;
-    x = 6500; // Spawn
-    height = 200;
-    width = 120;
-    speed = 10;
+
+    //x = 6500; // Spawn kommt aus dem Level
+    //height = 200;
+    //width = 120;
+    //speed = 10;
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -37,14 +37,17 @@ class Endboss extends CollidableObject {
     walkingInterval;
     hadFirstContact = false;
 
-    constructor(x, speed, energy) {
+    constructor(x, y, speed, energy, size) {
         super().loadImage('img/4_enemie_boss_chicken/1_walk/G4.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_ALERT);
         this.x = x;
+        this.y = y;
         this.speed = speed;
         this.energy = energy;
+        this.height = 200 * size;
+        this.width = 120 * size;
         this.animate();
     }
 

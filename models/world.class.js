@@ -227,9 +227,12 @@ class World {
     loadNextLevel() {
         setTimeout(() => {
             renderLevelDone();
-            openSlider();
+            //openSlider();
             setTimeout(() => {
                 this.clearAllIntervals();
+                this.stopAllMediaElements();
+                levelNumber++;
+                init(levelNumber);
                 setTimeout(() => {
                     closeSlider();
                 }, 5000);
@@ -239,6 +242,20 @@ class World {
 
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    }
+
+    stopAllMediaElements() {
+        this.character.walking_sound.remove();
+        this.character.jump_sound.remove();
+        this.character.hurt_sound.remove();
+        this.character.collect_coin_sound.remove();
+        this.character.collect_bottle_sound.remove();
+        this.level.enemies.forEach((enemy) => {
+            enemy.dead_sound.remove();
+        });
+        this.level.endboss.forEach((endboss) => {
+            endboss.dead_sound.remove();
+        });
     }
 
 }

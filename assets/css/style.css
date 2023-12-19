@@ -11,7 +11,7 @@
 
 body {
     margin: 0;
-    min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,15 +33,9 @@ body {
 }
 
 .interaction-buttons {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 #start-button {
@@ -57,18 +51,28 @@ body {
     cursor: pointer;
 }
 
+.game-container {
+    position: relative;
+}
+
 .mobile-buttons {
-    display: flex;
+    position: absolute;
+    display: none;
     justify-content: space-between;
-    width: 720px;
+    bottom: 18px;
+    left: 10px;
+    right: 10px;
+    opacity: 50%;
 }
 
 .mobile-left {
     display: flex;
+    gap: 8px;
 }
 
 .mobile-right {
     display: flex;
+    gap: 8px;
 }
 
 #left {
@@ -128,6 +132,20 @@ canvas {
 
 @media only screen and (max-height: 480px) {
     canvas {
-        height: 100vh;
+        height: 100dvh;
+    }
+
+    #start-screen {
+        height: 100dvh;
+    }
+}
+
+@media (pointer: coarse) {
+    .mobile-buttons {
+        display: flex;
+    }
+
+    .keys {
+        display: none;
     }
 }

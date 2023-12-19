@@ -119,6 +119,7 @@ class Character extends CollidableObject {
 
             }
         }, 1000 / 60);
+
     }
 
 }

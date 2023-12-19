@@ -3,16 +3,55 @@ let world;
 let keyboard = new Keyboard();
 let levelNumber;
 
-
 function init(number) {
     levelNumber = number;
     document.getElementById('start-screen').classList.add('d-none');
     document.getElementById('interaction-buttons').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     canvas = document.getElementById('canvas');
-    initLevel();
+    callInitLevel(number);
+    //initLevel(number);
     world = new World(canvas, keyboard);
 }
+
+function callInitLevel(number) {
+    // Den Funktionsnamen generieren
+    var functionName = "initLevel" + number;
+
+    // Überprüfen, ob die Funktion existiert
+    if (typeof window[functionName] === 'function') {
+        // Funktion aufrufen
+        window[functionName]();
+    } else {
+        console.error("Die Funktion " + functionName + " existiert nicht.");
+    }
+}
+
+
+/* function fullscreen() {
+    let fullscreen = document.getElementById('fullscreen');
+    enterFullscreen(fullscreen);
+}
+
+
+function enterFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+        element.msRequestFullscreen();
+    } else if (element.webkitRequestFullscreen) {  // iOS Safari
+        element.webkitRequestFullscreen();
+    }
+}
+
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+} */
 
 
 window.addEventListener("keydown", (e) => {

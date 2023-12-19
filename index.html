@@ -31,13 +31,21 @@
     <script src="models/level.class.js"></script>
     <script src="levels/level-1.js"></script>
     <script src="levels/level-2.js"></script>
+    <script src="levels/level-3.js"></script>
+    <script src="levels/level-4.js"></script>
+    <script src="levels/level-5.js"></script>
+    <script src="levels/level-6.js"></script>
+    <script src="levels/level-7.js"></script>
+    <script src="levels/level-8.js"></script>
+    <script src="levels/level-9.js"></script>
+    <script src="levels/level-10.js"></script>
     <script src="js/game.js"></script>
     <script src="assets/js/slider.js"></script>
 </head>
 
 <body>
 
-    <div id="game-container">
+    <div class="game-container" id="fullscreen">
         <img src="./img/start.jpg" id="start-screen" width="720" height="480" alt="Start Screen">
         <canvas id="canvas" class="d-none" width="720" height="480">
             Your browser does not support canvas element.
@@ -47,21 +55,20 @@
             <div>JUMP = SPACE</div>
             <div>THROW = D</div>
         </div>
+        <div id="mobile-buttons" class="mobile-buttons">
+            <div class="mobile-left">
+                <button id="left"></button>
+                <button id="right"></button>
+            </div>
+            <div class="mobile-right">
+                <button id="action"></button>
+                <button id="space"></button>
+            </div>
+        </div>
     </div>
 
     <div id="interaction-buttons" class="interaction-buttons">
         <button id="start-button" onclick="init(1);">START</button>
-    </div>
-
-    <div id="mobile-buttons" class="mobile-buttons">
-        <div class="mobile-left">
-            <button id="left"></button>
-            <button id="right"></button>
-        </div>
-        <div class="mobile-right">
-            <button id="action"></button>
-            <button id="space"></button>
-        </div>
     </div>
 
     <div id="screen-center" class="d-none">

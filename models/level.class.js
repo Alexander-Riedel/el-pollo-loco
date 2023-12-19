@@ -17,14 +17,14 @@ class Level {
         this.buildings = buildings;
     }
 
-    moveBackgroundObjects(direction, characterSpeed) {
+    /* moveBackgroundObjects(direction, characterSpeed) {
         this.backgroundObjects.forEach(obj => {
             // Passen Sie hier die Geschwindigkeit der Hintergrundobjekte relativ zur Charakterbewegung an
             if (obj.parallaxSpeed) {
                 obj.x -= characterSpeed * obj.parallaxSpeed * direction;
             }
         });
-    }
+    } */
     
 }
 

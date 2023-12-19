@@ -1,6 +1,7 @@
 class MovableObject extends DrawableObject {
 
     width = 95;
+    height = 0;
     speed = 3;
     otherDirection = false;
     speedY = 0;
