@@ -16,6 +16,8 @@ class World {
     coinsTotal = 0;
     coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     bottles = 0;
+    collect_coin_sound = new Audio('audio/coin.wav');
+    collect_bottle_sound = new Audio('audio/bottle.wav');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -152,15 +154,27 @@ class World {
     checkCollisionsCollectibleObjects() {
         this.level.collectibleObjects.forEach((collectible) => {
             if (collectible instanceof Coin && this.character.isColliding(collectible)) {
-                this.character.collectCoin();
+                this.collectCoin();
                 this.level.collectibleObjects.splice(this.level.collectibleObjects.indexOf(collectible), 1);
                 this.statusBarCoins.setPercentage(this.character.coins / this.coinsTotal * 100);
             } else if (collectible instanceof Bottle && this.character.isColliding(collectible) && this.character.bottles < 11) {
-                this.character.collectBottle();
+                this.collectBottle();
                 this.level.collectibleObjects.splice(this.level.collectibleObjects.indexOf(collectible), 1);
                 this.statusBarBottles.setPercentage(this.character.bottles * 10);
             }
         });
+    }
+
+    collectCoin() {
+        this.character.coins++;
+        this.collect_coin_sound.volume = 0.1;
+        this.collect_coin_sound.play();
+    }
+
+    collectBottle() {
+        this.character.bottles++;
+        this.collect_bottle_sound.volume = 0.1;
+        this.collect_bottle_sound.play();
     }
 
     draw() {
@@ -248,8 +262,8 @@ class World {
         this.character.walking_sound.remove();
         this.character.jump_sound.remove();
         this.character.hurt_sound.remove();
-        this.character.collect_coin_sound.remove();
-        this.character.collect_bottle_sound.remove();
+        this.collect_coin_sound.remove();
+        this.collect_bottle_sound.remove();
         this.level.enemies.forEach((enemy) => {
             enemy.dead_sound.remove();
         });

@@ -11,8 +11,6 @@ class MovableObject extends DrawableObject {
     coins = 0;
     bottles = 0;
     lastHit = 0;
-    collect_coin_sound = new Audio('audio/coin.wav');
-    collect_bottle_sound = new Audio('audio/bottle.wav');
     offset = {
         top: 0,
         left: 0,
@@ -86,18 +84,6 @@ class MovableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
-    }
-
-    collectCoin() {
-        this.coins++;
-        this.collect_coin_sound.volume = 0.1;
-        this.collect_coin_sound.play();
-    }
-
-    collectBottle() {
-        this.bottles++;
-        this.collect_bottle_sound.volume = 0.1;
-        this.collect_bottle_sound.play();
     }
 
 }
