@@ -16,7 +16,8 @@
 
 .slider-bg {
     z-index: 998;
-    background-color: rgba(0, 0, 0, 1);
+    background: rgb(208,133,110);
+    background: linear-gradient(165deg, rgba(208,133,110,1) 0%, rgba(230,166,113,1) 60%, rgba(52,36,39,1) 100%);
     position: fixed;
     left: 0;
     right: 0;
@@ -48,8 +49,9 @@
     align-items: center;
     gap: 24px;
     font-family: 'Peralta';
-    font-size: 32px;
+    font-size: 64px;
     color: #FFFFFF;
+    text-shadow: 13px 10px 13px black;
 }
 
 .slide-from-top {

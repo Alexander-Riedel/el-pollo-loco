@@ -40,3 +40,25 @@ function renderLevelDone() {
         </div>
     `;
 }
+
+
+function renderYouLose() {
+    document.getElementById('slider-container').innerHTML = `
+        <div id="slider">
+            <span>YOU</span>
+            <span>LOSE!</span>
+        </div>
+    `;
+}
+
+
+function renderYouWin() {
+    document.getElementById('slider-container').innerHTML = `
+        <div id="slider">
+            <span>WINNER</span>
+            <span>WINNER</span>
+            <span>CHICKEN</span>
+            <span>DINNER</span>
+        </div>
+    `;
+}

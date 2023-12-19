@@ -86,6 +86,9 @@ class World {
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);
+                    if (this.character.energy == 0) {
+                        this.loseGame();
+                    }
                 }
             }
         });
@@ -287,12 +290,30 @@ class World {
 
     winGame() {
         this.clearAllIntervals();
-        console.log('WINNER WINNER CHICKEN DINNER');
+        setTimeout(() => {
+            renderYouWin();
+            openSlider();
+            setTimeout(() => {
+                this.stopAllMediaElements();
+                setTimeout(() => {
+                    initGameWon();
+                }, 1000);
+            }, 2500);
+        }, 500);
     }
 
     loseGame() {
         this.clearAllIntervals();
-        console.log('YOU LOSE!')
+        setTimeout(() => {
+            renderYouLose();
+            openSlider();
+            setTimeout(() => {
+                this.stopAllMediaElements();
+                setTimeout(() => {
+                    initRestartGame();
+                }, 1000);
+            }, 2500);
+        }, 500);
     }
 
 }
