@@ -73,6 +73,9 @@ class World {
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);
+                    if (this.character.energy == 0) {
+                        this.loseGame();
+                    }
                 }
             }
         });
@@ -106,7 +109,11 @@ class World {
                     endboss.energy = endboss.energy - 20;
                     if (endboss.energy == 0) {
                         this.killEnemy(endboss);
-                        this.loadNextLevel();
+                        if (levelNumber == 10) {
+                            this.winGame();
+                        } else {
+                            this.loadNextLevel();
+                        }
                     }
                 }
             });
@@ -128,19 +135,24 @@ class World {
             this.character.jump(15, 0);
             this.killEnemy(enemy);
         } else if (enemy instanceof Endboss) {
-            this.character.jump(15, 0);
+            this.character.jump(20, 0);
             this.hitEndboss(enemy);
         }
     }
 
     hitEndboss(endboss) {
-        this.statusBarEndboss.setPercentage(endboss.energy - 20);
-        endboss.energy = endboss.energy - 20;
-        //this.character.x -= this.character.speedX;
-        //this.character.speedX -= this.character.acceleration;
+        if (endboss.energy > 0 && new Date().getTime() - endboss.lastHit > 500) {
+            this.statusBarEndboss.setPercentage(endboss.energy - 20);
+            endboss.energy = endboss.energy - 20;
+            endboss.lastHit = new Date().getTime();
+        }
         if (endboss.energy == 0) {
             this.killEnemy(endboss);
-            this.loadNextLevel();
+            if (levelNumber == 10) {
+                this.winGame();
+            } else {
+                this.loadNextLevel();
+            }
         }
     }
 
@@ -148,6 +160,7 @@ class World {
         enemy.playAnimation(enemy.IMAGES_DEAD);
         enemy.playDeadSound();
         enemy.isDead = true;
+        //enemy.energy = 100;
         enemy.offset.top = 250;
     }
 
@@ -218,8 +231,8 @@ class World {
         }
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
-        mo.drawInnerFrame(this.ctx);
+        //mo.drawFrame(this.ctx);
+        //mo.drawInnerFrame(this.ctx);
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);
@@ -239,17 +252,17 @@ class World {
     }
 
     loadNextLevel() {
+        this.clearAllIntervals();
         setTimeout(() => {
             renderLevelDone();
-            //openSlider();
+            openSlider();
             setTimeout(() => {
-                this.clearAllIntervals();
                 this.stopAllMediaElements();
                 levelNumber++;
                 init(levelNumber);
                 setTimeout(() => {
                     closeSlider();
-                }, 5000);
+                }, 1000);
             }, 2500);
         }, 500);
     }
@@ -270,6 +283,16 @@ class World {
         this.level.endboss.forEach((endboss) => {
             endboss.dead_sound.remove();
         });
+    }
+
+    winGame() {
+        this.clearAllIntervals();
+        console.log('WINNER WINNER CHICKEN DINNER');
+    }
+
+    loseGame() {
+        this.clearAllIntervals();
+        console.log('YOU LOSE!')
     }
 
 }

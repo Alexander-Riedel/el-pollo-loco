@@ -3,14 +3,16 @@ function initLevel3() {
     level1 = new Level(
         [
             new Chicken(2000, 2),
+            new Chicken(2500, 2),
             new Chicken(3500, 2),
+            new Chicken(3750, 2),
             new Chicken(5000, 2),
             new ChickenSmall(4000, 2),
             new ChickenSmall(4400, 2),
             new ChickenSmall(4800, 2)
         ],
         [
-            new Endboss(7000, 50, 5, 100, 2)
+            new Endboss(7000, 140, 2.5, 100, 1.5)
         ],
         [
             new Cloud('img/5_background/layers/4_clouds/1.png', 0),
@@ -87,87 +89,39 @@ function initLevel3() {
             new Building('img/0_building/Wall_A_02.png', 7648, 100, 320, 320)
         ],
         [
-            // 35 coins - easter egg
-            new Coin(-300, 100),
-            new Coin(-300, 150),
-            new Coin(-300, 200),
-            new Coin(-300, 250),
-            new Coin(-300, 300),
-            new Coin(-350, 100),
-            new Coin(-350, 150),
-            new Coin(-350, 200),
-            new Coin(-350, 250),
-            new Coin(-350, 300),
-            new Coin(-400, 100),
-            new Coin(-400, 150),
-            new Coin(-400, 200),
-            new Coin(-400, 250),
-            new Coin(-400, 300),
-            new Coin(-450, 100),
-            new Coin(-450, 150),
-            new Coin(-450, 200),
-            new Coin(-450, 250),
-            new Coin(-450, 300),
-            new Coin(-500, 100),
-            new Coin(-500, 150),
-            new Coin(-500, 200),
-            new Coin(-500, 250),
-            new Coin(-500, 300),
-            new Coin(-550, 100),
-            new Coin(-550, 150),
-            new Coin(-550, 200),
-            new Coin(-550, 250),
-            new Coin(-550, 300),
-            new Coin(-600, 100),
-            new Coin(-600, 150),
-            new Coin(-600, 200),
-            new Coin(-600, 250),
-            new Coin(-600, 300),
 
-            // 1 coin 
             new Coin(500, 150),
-
-            // 3 coins
-            new Coin(1000, 200),
-            new Coin(1050, 150),
-            new Coin(1100, 200),
-
-            // 5 coins
-            new Coin(1650, 250),
-            new Coin(1650, 200),
+            new Coin(600, 150),
+            new Coin(700, 150),
+            new Coin(800, 150),
+            new Coin(900, 150),
+            new Coin(1000, 150),
+            new Coin(1100, 150),
+            new Coin(1200, 150),
+            new Coin(1300, 150),
+            new Coin(1400, 150),
+            new Coin(1500, 150),
+            new Coin(1600, 150),
             new Coin(1700, 150),
-            new Coin(1750, 200),
-            new Coin(1750, 250),
-
-            // 4 coins
-            new Coin(2300, 150),
-            new Coin(2350, 150),
-            new Coin(2400, 150),
-            new Coin(2450, 150),
-            new Coin(2500, 150),
-
-            // 5 coins vertical
-            new Coin(3300, 100),
-            new Coin(3300, 150),
-            new Coin(3300, 200),
-            new Coin(3300, 250),
-            new Coin(3300, 300),
-
-            // 2 coins
+            new Coin(1800, 150),
+            new Coin(1900, 150),
+            new Coin(2000, 150),
             new Coin(4000, 150),
-            new Coin(4050, 150),
-
-            // 1 coin
-            new Coin(4550, 150),
-
-            // 2 coins
-            new Coin(5050, 150),
+            new Coin(4100, 150),
+            new Coin(4200, 150),
+            new Coin(4300, 150),
+            new Coin(4400, 150),
+            new Coin(4500, 150),
+            new Coin(4600, 150),
+            new Coin(4700, 150),
+            new Coin(4800, 150),
+            new Coin(4900, 150),
+            new Coin(5000, 150),
             new Coin(5100, 150),
-
-            // 3 coins
-            new Coin(5600, 200),
-            new Coin(5650, 150),
-            new Coin(5700, 200),
+            new Coin(5200, 150),
+            new Coin(5300, 150),
+            new Coin(5400, 150),
+            new Coin(5500, 150),
 
             // bottles
             new Bottle(750, 360),

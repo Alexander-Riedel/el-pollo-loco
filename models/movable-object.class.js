@@ -70,7 +70,7 @@ class MovableObject extends DrawableObject {
     }
 
     hit() {
-        if (this.energy > 0 && new Date().getTime() - this.lastHit > 500) {
+        if (this.energy > 0 && new Date().getTime() - this.lastHit > 600) {
             this.energy -= 20;
             this.lastHit = new Date().getTime();
         }

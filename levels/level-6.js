@@ -2,15 +2,31 @@ function initLevel6() {
 
     level1 = new Level(
         [
-            new Chicken(2000, 1),
-            new Chicken(3500, 1),
-            new Chicken(5000, 1),
-            new ChickenSmall(4000, 2),
-            new ChickenSmall(4400, 2),
-            new ChickenSmall(4800, 2)
+            new Chicken(2000, 7),
+            new Chicken(2500, 7),
+            new Chicken(3500, 7),
+            new Chicken(3750, 7),
+            new Chicken(5000, 7),
+            new Chicken(2000, 9),
+            new Chicken(2500, 9),
+            new Chicken(3500, 9),
+            new Chicken(3750, 9),
+            new Chicken(5000, 9),
+            new ChickenSmall(4000, 3),
+            new ChickenSmall(4400, 3),
+            new ChickenSmall(2100, 3),
+            new ChickenSmall(2800, 3),
+            new ChickenSmall(4900, 3),
+            new ChickenSmall(6000, 3),
+            new ChickenSmall(8000, 15),
+            new ChickenSmall(8100, 15),
+            new ChickenSmall(8200, 15),
+            new ChickenSmall(8300, 15),
+            new ChickenSmall(8350, 15),
+            new ChickenSmall(8550, 15)
         ],
         [
-            new Endboss(7000, 50, 5, 100, 2)
+            new Endboss(7000, 50, 6, 100, 2)
         ],
         [
             new Cloud('img/5_background/layers/4_clouds/1.png', 0),
