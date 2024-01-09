@@ -3,9 +3,12 @@ let world;
 let keyboard = new Keyboard();
 let levelNumber;
 
+
 function init(number) {
     levelNumber = number;
     document.getElementById('start-screen').classList.add('d-none');
+    document.getElementById('lose-screen').classList.add('d-none');
+    document.getElementById('win-screen').classList.add('d-none');
     document.getElementById('interaction-buttons').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     canvas = document.getElementById('canvas');
@@ -13,14 +16,34 @@ function init(number) {
     world = new World(canvas, keyboard);
 }
 
+
+function initRestartGame() {
+    levelNumber = 1;
+    document.getElementById('lose-screen').classList.remove('d-none');
+    document.getElementById('win-screen').classList.add('d-none');
+    document.getElementById('canvas').classList.add('d-none');
+    document.getElementById('interaction-buttons').classList.remove('d-none');
+    closeSlider();
+}
+
+
+function initGameWon() {
+    levelNumber = 1;
+    document.getElementById('win-screen').classList.remove('d-none');
+    document.getElementById('lose-screen').classList.add('d-none');
+    document.getElementById('canvas').classList.add('d-none');
+    document.getElementById('interaction-buttons').classList.remove('d-none');
+    closeSlider();
+}
+
+
 function callInitLevel(number) {
     var functionName = "initLevel" + number;
     if (typeof window[functionName] === 'function') {
         window[functionName]();
-    } else {
-        console.error("Die Funktion " + functionName + " existiert nicht.");
     }
 }
+
 
 window.addEventListener("keydown", (e) => {
     if (e.keyCode == 39) {

@@ -87,43 +87,6 @@ function initLevel2() {
             new Building('img/0_building/Wall_A_02.png', 7648, 100, 320, 320)
         ],
         [
-            // 35 coins - easter egg
-            new Coin(-300, 100),
-            new Coin(-300, 150),
-            new Coin(-300, 200),
-            new Coin(-300, 250),
-            new Coin(-300, 300),
-            new Coin(-350, 100),
-            new Coin(-350, 150),
-            new Coin(-350, 200),
-            new Coin(-350, 250),
-            new Coin(-350, 300),
-            new Coin(-400, 100),
-            new Coin(-400, 150),
-            new Coin(-400, 200),
-            new Coin(-400, 250),
-            new Coin(-400, 300),
-            new Coin(-450, 100),
-            new Coin(-450, 150),
-            new Coin(-450, 200),
-            new Coin(-450, 250),
-            new Coin(-450, 300),
-            new Coin(-500, 100),
-            new Coin(-500, 150),
-            new Coin(-500, 200),
-            new Coin(-500, 250),
-            new Coin(-500, 300),
-            new Coin(-550, 100),
-            new Coin(-550, 150),
-            new Coin(-550, 200),
-            new Coin(-550, 250),
-            new Coin(-550, 300),
-            new Coin(-600, 100),
-            new Coin(-600, 150),
-            new Coin(-600, 200),
-            new Coin(-600, 250),
-            new Coin(-600, 300),
-
             // 1 coin 
             new Coin(500, 150),
 
@@ -132,59 +95,65 @@ function initLevel2() {
             new Coin(1050, 150),
             new Coin(1100, 200),
 
-            // 5 coins
-            new Coin(1650, 250),
-            new Coin(1650, 200),
-            new Coin(1700, 150),
-            new Coin(1750, 200),
-            new Coin(1750, 250),
-
-            // 4 coins
-            new Coin(2300, 150),
-            new Coin(2350, 150),
-            new Coin(2400, 150),
-            new Coin(2450, 150),
-            new Coin(2500, 150),
-
-            // 5 coins vertical
-            new Coin(3300, 100),
-            new Coin(3300, 150),
-            new Coin(3300, 200),
-            new Coin(3300, 250),
-            new Coin(3300, 300),
-
-            // 2 coins
-            new Coin(4000, 150),
-            new Coin(4050, 150),
-
-            // 1 coin
-            new Coin(4550, 150),
-
-            // 2 coins
-            new Coin(5050, 150),
-            new Coin(5100, 150),
+            // 1 coin 
+            new Coin(1500, 150),
 
             // 3 coins
-            new Coin(5600, 200),
-            new Coin(5650, 150),
-            new Coin(5700, 200),
+            new Coin(2000, 200),
+            new Coin(2050, 150),
+            new Coin(2100, 200),
+
+            // 1 coin 
+            new Coin(2500, 150),
+
+            // 3 coins
+            new Coin(3000, 200),
+            new Coin(3050, 150),
+            new Coin(3100, 200),
+
+            // 1 coin 
+            new Coin(3500, 150),
+
+            // 3 coins
+            new Coin(4000, 200),
+            new Coin(4050, 150),
+            new Coin(4100, 200),
+
+            // 1 coin 
+            new Coin(4500, 150),
+
+            // 3 coins
+            new Coin(5000, 200),
+            new Coin(5050, 150),
+            new Coin(5100, 200),
+
+            // 1 coin 
+            new Coin(5500, 150),
 
             // bottles
-            new Bottle(750, 360),
-            new Bottle(1350, 360),
-            new Bottle(1400, 360),
-            new Bottle(2850, 360),
-            new Bottle(3000, 360),
-            new Bottle(3650, 360),
-            new Bottle(3650, 360),
-            new Bottle(4800, 360),
-            new Bottle(5400, 360),
-            new Bottle(5850, 360),
-            new Bottle(5910, 360),
-            new Bottle(6050, 360),
-            new Bottle(6270, 360),
-            new Bottle(6570, 360),
-            new Bottle(6900, 360)
+            new Bottle(-356, 360),
+            new Bottle(-289, 360),
+            new Bottle(-375, 360),
+            new Bottle(-168, 360),
+            new Bottle(-201, 360),
+            new Bottle(-319, 360),
+            new Bottle(-382, 360),
+            new Bottle(-174, 360),
+            new Bottle(993, 360),
+            new Bottle(1125, 360),
+            new Bottle(1478, 360),
+            new Bottle(1734, 360),
+            new Bottle(2301, 360),
+            new Bottle(2415, 360),
+            new Bottle(2830, 360),
+            new Bottle(3205, 360),
+            new Bottle(3512, 360),
+            new Bottle(4167, 360),
+            new Bottle(4326, 360),
+            new Bottle(4849, 360),
+            new Bottle(5287, 360),
+            new Bottle(5921, 360),
+            new Bottle(6148, 360)
         ]
 
     );

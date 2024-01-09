@@ -2,21 +2,25 @@ function initLevel5() {
 
     level1 = new Level(
         [
-            new Chicken(2200, 5),
-            new Chicken(2500, 5),
-            new Chicken(2800, 5),
-            new Chicken(3100, 5),
-            new Chicken(4000, 5),
-            new Chicken(5000, 5),
-            new ChickenSmall(4000, 4),
-            new ChickenSmall(4400, 4),
-            new ChickenSmall(4800, 4),
-            new ChickenSmall(5000, 4),
-            new ChickenSmall(5200, 4),
-            new ChickenSmall(6000, 4)
+            new Chicken(2000, 5),
+            new Chicken(2500, 6),
+            new Chicken(3500, 7),
+            new Chicken(3750, 8),
+            new Chicken(5000, 9),
+            new Chicken(2000, 6),
+            new Chicken(2500, 7),
+            new Chicken(3500, 8),
+            new Chicken(3750, 9),
+            new Chicken(5000, 10),
+            new ChickenSmall(4000, 3),
+            new ChickenSmall(4400, 3),
+            new ChickenSmall(2100, 3),
+            new ChickenSmall(2800, 3),
+            new ChickenSmall(4900, 3),
+            new ChickenSmall(6000, 3)
         ],
         [
-            new Endboss(7000, 50, 5, 100, 2)
+            new Endboss(7000, 50, 6, 100, 2)
         ],
         [
             new Cloud('img/5_background/layers/4_clouds/1.png', 0),
@@ -93,64 +97,21 @@ function initLevel5() {
             new Building('img/0_building/Wall_A_02.png', 7648, 100, 320, 320)
         ],
         [
-            // 35 coins - easter egg
-            new Coin(-300, 100),
-            new Coin(-300, 150),
-            new Coin(-300, 200),
-            new Coin(-300, 250),
-            new Coin(-300, 300),
-            new Coin(-350, 100),
-            new Coin(-350, 150),
-            new Coin(-350, 200),
-            new Coin(-350, 250),
-            new Coin(-350, 300),
-            new Coin(-400, 100),
-            new Coin(-400, 150),
-            new Coin(-400, 200),
-            new Coin(-400, 250),
-            new Coin(-400, 300),
-            new Coin(-450, 100),
-            new Coin(-450, 150),
-            new Coin(-450, 200),
-            new Coin(-450, 250),
-            new Coin(-450, 300),
-            new Coin(-500, 100),
-            new Coin(-500, 150),
-            new Coin(-500, 200),
-            new Coin(-500, 250),
-            new Coin(-500, 300),
-            new Coin(-550, 100),
-            new Coin(-550, 150),
-            new Coin(-550, 200),
-            new Coin(-550, 250),
-            new Coin(-550, 300),
-            new Coin(-600, 100),
-            new Coin(-600, 150),
-            new Coin(-600, 200),
-            new Coin(-600, 250),
-            new Coin(-600, 300),
 
             // 1 coin 
-            new Coin(500, 150),
+            new Coin(700, 150),
 
             // 3 coins
-            new Coin(1000, 200),
-            new Coin(1050, 150),
-            new Coin(1100, 200),
+            new Coin(1200, 200),
+            new Coin(1250, 150),
+            new Coin(1300, 200),
 
             // 5 coins
-            new Coin(1650, 250),
+            new Coin(1600, 250),
             new Coin(1650, 200),
             new Coin(1700, 150),
             new Coin(1750, 200),
-            new Coin(1750, 250),
-
-            // 4 coins
-            new Coin(2300, 150),
-            new Coin(2350, 150),
-            new Coin(2400, 150),
-            new Coin(2450, 150),
-            new Coin(2500, 150),
+            new Coin(1800, 250),
 
             // 5 coins vertical
             new Coin(3300, 100),
@@ -159,9 +120,19 @@ function initLevel5() {
             new Coin(3300, 250),
             new Coin(3300, 300),
 
-            // 2 coins
-            new Coin(4000, 150),
-            new Coin(4050, 150),
+            // 5 coins vertical
+            new Coin(3600, 100),
+            new Coin(3600, 150),
+            new Coin(3600, 200),
+            new Coin(3600, 250),
+            new Coin(3600, 300),
+
+            // 5 coins vertical
+            new Coin(3900, 100),
+            new Coin(3900, 150),
+            new Coin(3900, 200),
+            new Coin(3900, 250),
+            new Coin(3900, 300),
 
             // 1 coin
             new Coin(4550, 150),
@@ -176,6 +147,14 @@ function initLevel5() {
             new Coin(5700, 200),
 
             // bottles
+            new Bottle(-456, 360),
+            new Bottle(-289, 360),
+            new Bottle(-375, 360),
+            new Bottle(-168, 360),
+            new Bottle(-201, 360),
+            new Bottle(-319, 360),
+            new Bottle(-582, 360),
+            new Bottle(-174, 360),
             new Bottle(750, 360),
             new Bottle(1350, 360),
             new Bottle(1400, 360),

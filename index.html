@@ -48,6 +48,8 @@
 
     <div class="game-container" id="fullscreen">
         <img src="./img/start.jpg" id="start-screen" width="720" height="480" alt="Start Screen">
+        <img src="./img/you-lose.jpg" id="lose-screen" width="720" height="480" alt="You Lose!" class="d-none">
+        <img src="./img/winner-winner-chicken-dinner.jpg" id="win-screen" width="720" height="480" alt="You Win!" class="d-none">
         <canvas id="canvas" class="d-none" width="720" height="480">
             Your browser does not support canvas element.
         </canvas>
@@ -56,21 +58,22 @@
             <div>JUMP = SPACE</div>
             <div>THROW = D</div>
         </div>
-        <button id="mute" onclick="muteSounds()"></button>
-        <div id="mobile-buttons" class="mobile-buttons">
-            <div class="mobile-left">
-                <button id="left"></button>
-                <button id="right"></button>
-            </div>
-            <div class="mobile-right">
-                <button id="action"></button>
-                <button id="space"></button>
-            </div>
-        </div>
     </div>
 
     <div id="interaction-buttons" class="interaction-buttons">
         <button id="start-button" onclick="init(1);">START</button>
+    </div>
+
+        <button id="mute" onclick="muteSounds()"></button>
+    <div id="mobile-buttons" class="mobile-buttons">
+        <div class="mobile-left">
+            <button id="left"></button>
+            <button id="right"></button>
+        </div>
+        <div class="mobile-right">
+            <button id="action"></button>
+            <button id="space"></button>
+        </div>
     </div>
 
     <div id="screen-center" class="d-none">

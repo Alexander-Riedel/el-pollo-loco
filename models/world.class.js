@@ -16,6 +16,8 @@ class World {
     coinsTotal = 0;
     coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     bottles = 0;
+    collect_coin_sound = new Audio('audio/coin.wav');
+    collect_bottle_sound = new Audio('audio/bottle.wav');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -71,6 +73,9 @@ class World {
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);
+                    if (this.character.energy == 0) {
+                        this.loseGame();
+                    }
                 }
             }
         });
@@ -81,6 +86,9 @@ class World {
                 } else {
                     this.character.hit();
                     this.statusBarHealth.setPercentage(this.character.energy);
+                    if (this.character.energy == 0) {
+                        this.loseGame();
+                    }
                 }
             }
         });
@@ -104,7 +112,11 @@ class World {
                     endboss.energy = endboss.energy - 20;
                     if (endboss.energy == 0) {
                         this.killEnemy(endboss);
-                        this.loadNextLevel();
+                        if (levelNumber == 10) {
+                            this.winGame();
+                        } else {
+                            this.loadNextLevel();
+                        }
                     }
                 }
             });
@@ -126,19 +138,24 @@ class World {
             this.character.jump(15, 0);
             this.killEnemy(enemy);
         } else if (enemy instanceof Endboss) {
-            this.character.jump(15, 0);
+            this.character.jump(20, 0);
             this.hitEndboss(enemy);
         }
     }
 
     hitEndboss(endboss) {
-        this.statusBarEndboss.setPercentage(endboss.energy - 20);
-        endboss.energy = endboss.energy - 20;
-        //this.character.x -= this.character.speedX;
-        //this.character.speedX -= this.character.acceleration;
+        if (endboss.energy > 0 && new Date().getTime() - endboss.lastHit > 500) {
+            this.statusBarEndboss.setPercentage(endboss.energy - 20);
+            endboss.energy = endboss.energy - 20;
+            endboss.lastHit = new Date().getTime();
+        }
         if (endboss.energy == 0) {
             this.killEnemy(endboss);
-            this.loadNextLevel();
+            if (levelNumber == 10) {
+                this.winGame();
+            } else {
+                this.loadNextLevel();
+            }
         }
     }
 
@@ -146,21 +163,34 @@ class World {
         enemy.playAnimation(enemy.IMAGES_DEAD);
         enemy.playDeadSound();
         enemy.isDead = true;
+        //enemy.energy = 100;
         enemy.offset.top = 250;
     }
 
     checkCollisionsCollectibleObjects() {
         this.level.collectibleObjects.forEach((collectible) => {
             if (collectible instanceof Coin && this.character.isColliding(collectible)) {
-                this.character.collectCoin();
+                this.collectCoin();
                 this.level.collectibleObjects.splice(this.level.collectibleObjects.indexOf(collectible), 1);
                 this.statusBarCoins.setPercentage(this.character.coins / this.coinsTotal * 100);
             } else if (collectible instanceof Bottle && this.character.isColliding(collectible) && this.character.bottles < 11) {
-                this.character.collectBottle();
+                this.collectBottle();
                 this.level.collectibleObjects.splice(this.level.collectibleObjects.indexOf(collectible), 1);
                 this.statusBarBottles.setPercentage(this.character.bottles * 10);
             }
         });
+    }
+
+    collectCoin() {
+        this.character.coins++;
+        this.collect_coin_sound.volume = 0.1;
+        this.collect_coin_sound.play();
+    }
+
+    collectBottle() {
+        this.character.bottles++;
+        this.collect_bottle_sound.volume = 0.1;
+        this.collect_bottle_sound.play();
     }
 
     draw() {
@@ -204,8 +234,8 @@ class World {
         }
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
-        mo.drawInnerFrame(this.ctx);
+        //mo.drawFrame(this.ctx);
+        //mo.drawInnerFrame(this.ctx);
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);
@@ -225,17 +255,17 @@ class World {
     }
 
     loadNextLevel() {
+        this.clearAllIntervals();
         setTimeout(() => {
             renderLevelDone();
             openSlider();
             setTimeout(() => {
-                this.clearAllIntervals();
                 this.stopAllMediaElements();
                 levelNumber++;
                 init(levelNumber);
                 setTimeout(() => {
                     closeSlider();
-                }, 5000);
+                }, 1000);
             }, 2500);
         }, 500);
     }
@@ -254,6 +284,34 @@ class World {
         chicken_dead_sound.remove();
         chicken_small_dead_sound.remove();
         endboss_dead_sound.remove();
+    }
+
+    winGame() {
+        this.clearAllIntervals();
+        setTimeout(() => {
+            renderYouWin();
+            openSlider();
+            setTimeout(() => {
+                this.stopAllMediaElements();
+                setTimeout(() => {
+                    initGameWon();
+                }, 1000);
+            }, 2500);
+        }, 500);
+    }
+
+    loseGame() {
+        this.clearAllIntervals();
+        setTimeout(() => {
+            renderYouLose();
+            openSlider();
+            setTimeout(() => {
+                this.stopAllMediaElements();
+                setTimeout(() => {
+                    initRestartGame();
+                }, 1000);
+            }, 2500);
+        }, 500);
     }
 
 }
