@@ -32,8 +32,8 @@ class Endboss extends CollidableObject {
     };
     collisionAdjustmentY = 60;
     isDead = false;
-    dead_sound = new Audio('audio/peep.wav');
-    hit_sound = new Audio('audio/hit.wav');
+    //dead_sound = new Audio('audio/peep.wav');
+    //hit_sound = new Audio('audio/hit.wav');
     walkingInterval;
     hadFirstContact = false;
 
@@ -75,7 +75,7 @@ class Endboss extends CollidableObject {
     }
 
     playDeadSound() {
-        this.dead_sound.play();
+        endboss_dead_sound.play();
         clearInterval(this.walkingInterval);
         this.y = 300;
     }

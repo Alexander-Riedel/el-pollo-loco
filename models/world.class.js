@@ -227,7 +227,7 @@ class World {
     loadNextLevel() {
         setTimeout(() => {
             renderLevelDone();
-            //openSlider();
+            openSlider();
             setTimeout(() => {
                 this.clearAllIntervals();
                 this.stopAllMediaElements();
@@ -245,17 +245,15 @@ class World {
     }
 
     stopAllMediaElements() {
-        this.character.walking_sound.remove();
-        this.character.jump_sound.remove();
-        this.character.hurt_sound.remove();
-        this.character.collect_coin_sound.remove();
-        this.character.collect_bottle_sound.remove();
-        this.level.enemies.forEach((enemy) => {
-            enemy.dead_sound.remove();
-        });
-        this.level.endboss.forEach((endboss) => {
-            endboss.dead_sound.remove();
-        });
+        collect_coin_sound.remove();
+        collect_bottle_sound.remove();
+        throw_sound.remove();
+        walking_sound.remove();
+        jump_sound.remove();
+        hurt_sound.remove();
+        chicken_dead_sound.remove();
+        chicken_small_dead_sound.remove();
+        endboss_dead_sound.remove();
     }
 
 }

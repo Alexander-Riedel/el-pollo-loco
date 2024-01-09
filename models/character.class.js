@@ -5,9 +5,9 @@ class Character extends CollidableObject {
     speed = 5;
     currentImage = 0;
     world;
-    walking_sound = new Audio('audio/step.wav');
-    jump_sound = new Audio('audio/jump.wav');
-    hurt_sound = new Audio('audio/hurt.wav');
+    //walking_sound = new Audio('audio/step.wav');
+    //jump_sound = new Audio('audio/jump.wav');
+    //hurt_sound = new Audio('audio/hurt.wav');
     isDeathAnimationPlayed = false;
 
     IMAGES_WALKING = [
@@ -77,12 +77,12 @@ class Character extends CollidableObject {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight('character');
-                this.walking_sound.play();
+                walking_sound.play();
             }
             if (this.world.keyboard.LEFT && this.x > this.world.level.level_start_x) {
                 this.moveLeft('character');
                 this.otherDirection = true;
-                this.walking_sound.play();
+                walking_sound.play();
             }
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
@@ -109,12 +109,11 @@ class Character extends CollidableObject {
             if (this.isDead()) {
                 // death sound
             } else if (this.isHurt()) {
-                this.hurt_sound.volume = 0.2;
-                this.hurt_sound.play();
+                hurt_sound.play();
             } else if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-                this.jump_sound.play();
+                jump_sound.play();
             } else if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && this.world.character.y == 227) {
-                this.walking_sound.play();
+                walking_sound.play();
             } else if (!this.isAboveGround()) {
 
             }

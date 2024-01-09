@@ -20,7 +20,7 @@ class Chicken extends CollidableObject {
     };
     collisionAdjustmentY = 75;
     isDead = false;
-    dead_sound = new Audio('audio/chicken-small-dead.wav');
+    //dead_sound = new Audio('audio/chicken-small-dead.wav');
     walkingInterval;
 
     constructor(x, speed) {
@@ -46,7 +46,7 @@ class Chicken extends CollidableObject {
     }
 
     playDeadSound() {
-        this.dead_sound.play();
+        chicken_dead_sound.play();
         clearInterval(this.walkingInterval);
     }
 
