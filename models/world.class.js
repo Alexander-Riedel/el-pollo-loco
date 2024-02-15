@@ -98,7 +98,12 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
                 if (bottle.isCollidingWithBottle(enemy)) {
-                    this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+                    setTimeout(() => {
+                        this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+                    }, 500);
+                    this.throwableObjects.forEach((bottle) => {
+                        bottle.splashAnimation(bottle,enemy)
+                    });
                     enemy.playAnimation(enemy.IMAGES_DEAD);
                     enemy.playDeadSound();
                     enemy.isDead = true;
@@ -107,7 +112,12 @@ class World {
             });
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isCollidingWithBottle(endboss)) {
-                    this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+                    setTimeout(() => {
+                        this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+                    }, 500);
+                    this.throwableObjects.forEach((bottle) => {
+                        bottle.splashAnimation(bottle,endboss)
+                    });
                     this.statusBarEndboss.setPercentage(endboss.energy - 20);
                     endboss.energy = endboss.energy - 20;
                     if (endboss.energy == 0) {
