@@ -11,7 +11,22 @@ let endboss_dead_sound = new Audio('audio/peep.wav');
 collect_coin_sound.volume = 0.1;
 collect_bottle_sound.volume = 0.1;
 throw_sound.volume = 0.1;
+walking_sound.volume = 1;
+jump_sound.volume = 1;
 hurt_sound.volume = 0.2;
+chicken_dead_sound.volume = 0.5;
+chicken_small_dead_sound.volume = 0.7;
+endboss_dead_sound.volume = 0.6;
+
+
+function toggleSound() {
+    let muteButton = document.getElementById('mute');
+    if (muteButton.getAttribute('onclick') === 'toggleSound(), muteSounds()') {
+        muteButton.setAttribute('onclick', 'toggleSound(), unmuteSounds()');
+    } else {
+        muteButton.setAttribute('onclick', 'toggleSound(), muteSounds()');
+    }
+}
 
 
 function muteSounds() {
@@ -24,11 +39,17 @@ function muteSounds() {
     chicken_dead_sound.volume = 0;
     chicken_small_dead_sound.volume = 0;
     endboss_dead_sound.volume = 0;
-
-    //change button 
 }
 
 
 function unmuteSounds() {
-
+    collect_coin_sound.volume = 0.1;
+    collect_bottle_sound.volume = 0.1;
+    throw_sound.volume = 0.1;
+    walking_sound.volume = 1;
+    jump_sound.volume = 1;
+    hurt_sound.volume = 0.2;
+    chicken_dead_sound.volume = 0.5;
+    chicken_small_dead_sound.volume = 0.7;
+    endboss_dead_sound.volume = 0.6;
 }

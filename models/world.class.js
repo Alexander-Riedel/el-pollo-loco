@@ -183,14 +183,14 @@ class World {
 
     collectCoin() {
         this.character.coins++;
-        this.collect_coin_sound.volume = 0.1;
-        this.collect_coin_sound.play();
+        //this.collect_coin_sound.volume = 0.1;
+        collect_coin_sound.play();
     }
 
     collectBottle() {
         this.character.bottles++;
-        this.collect_bottle_sound.volume = 0.1;
-        this.collect_bottle_sound.play();
+        //this.collect_bottle_sound.volume = 0.1;
+        collect_bottle_sound.play();
     }
 
     draw() {
