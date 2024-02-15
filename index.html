@@ -46,6 +46,20 @@
 
 <body>
 
+    <div class="center">
+        <div id="interaction-buttons" class="interaction-buttons">
+            <button id="start-button" onclick="init(1);">
+                <img id="mute" src="/img/keys/gamepad.svg" alt="left" />
+                <b>START</b>
+            </button>
+        </div>
+    </div>
+
+    <div class="mute-button-container-desktop">
+        <button id="mute-button-desktop" class="mute-button-desktop" onclick="toggleSound(), muteSounds()"><img
+                id="mute" src="/img/keys/unmuted.svg" alt="left" /></button>
+    </div>
+
     <div class="game-container" id="fullscreen">
         <img src="./img/start.jpg" id="start-screen" width="720" height="480" alt="Start Screen">
         <img src="./img/you-lose.jpg" id="lose-screen" width="720" height="480" alt="You Lose!" class="d-none">
@@ -54,6 +68,7 @@
         <canvas id="canvas" class="d-none" width="720" height="480">
             Your browser does not support canvas element.
         </canvas>
+
         <div id="keys" class="keys">
             <div>RUN = LEFT / RIGHT</div>
             <div>JUMP = SPACE</div>
@@ -61,20 +76,19 @@
         </div>
     </div>
 
-    <div id="interaction-buttons" class="interaction-buttons">
-        <button id="start-button" onclick="init(1);">START</button>
+    <div class="mute-button-container">
+        <button id="mute-button" class="mute-button" onclick="toggleSound(), muteSounds()"><img id="mute"
+                src="/img/keys/unmuted.svg" alt="left" /></button>
     </div>
 
-    <button id="mute" onclick="toggleSound(), muteSounds()"></button>
-    
     <div id="mobile-buttons" class="mobile-buttons">
         <div class="mobile-left">
-            <button id="left"></button>
-            <button id="right"></button>
+            <button id="left" class="mobile-button"><img src="/img/keys/left.svg" alt="left" /></button>
+            <button id="right" class="mobile-button"><img src="/img/keys/right.svg" alt="right" /></button>
         </div>
         <div class="mobile-right">
-            <button id="action"></button>
-            <button id="space"></button>
+            <button id="action" class="mobile-button"><img src="/img/keys/bottle.svg" alt="throw" /></button>
+            <button id="space" class="mobile-button"><img src="/img/keys/space.svg" alt="jump" /></button>
         </div>
     </div>
 

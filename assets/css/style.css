@@ -23,6 +23,14 @@ body {
     background-attachment: fixed;
 }
 
+.center {
+    z-index: 999;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
 .keys {
     display: flex;
     justify-content: space-between;
@@ -40,7 +48,7 @@ body {
 
 #start-button {
     background: linear-gradient(350deg, #cc9600 45%, #ccb800 100%);
-    padding: 25px 50px;
+    padding: 16px 36px;
     border: none;
     box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
     border-radius: 8px;
@@ -49,10 +57,74 @@ body {
     flex-direction: row;
     align-items: center;
     cursor: pointer;
+    font-size: 16px;
+    color: #2f3050;
+    gap: 12px;
+}
+
+#start-button img {
+    height: 40px;
+    width: 40px;
 }
 
 .game-container {
     position: relative;
+}
+
+.mute-button-container-desktop {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.mute-button-desktop {
+    background: linear-gradient(350deg, #cc9600 45%, #ccb800 100%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-size: cover;
+    border: none;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mute-button-desktop img {
+    width: 36px;
+    height: 36px;
+}
+
+.mute-button-container {
+    position: absolute;
+    display: none;
+    justify-content: space-between;
+    top: 18px;
+    right: 10px;
+    right: 10px;
+    opacity: 50%;
+}
+
+.mute-button {
+    background: linear-gradient(350deg, #cc9600 45%, #ccb800 100%);
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-size: cover;
+    border: none;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.mute-button img {
+    height: 50px;
+    width: 50px;
 }
 
 .mobile-buttons {
@@ -65,6 +137,26 @@ body {
     opacity: 50%;
 }
 
+.mobile-buttons img {
+    height: 50px;
+    width: 50px;
+}
+
+.mobile-button {
+    background: linear-gradient(350deg, #cc9600 45%, #ccb800 100%);
+    width: 75px;
+    height: 75px;
+    border: none;
+    background-size: cover;
+    border: none;
+    box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 .mobile-left {
     display: flex;
     gap: 8px;
@@ -73,44 +165,6 @@ body {
 .mobile-right {
     display: flex;
     gap: 8px;
-}
-
-#left {
-    background: unset;
-    width: 75px;
-    height: 75px;
-    border: none;
-    background-image: url(../../img/keys/left.png);
-    background-size: cover;
-}
-
-#right {
-    background: unset;
-    width: 75px;
-    height: 75px;
-    border: none;
-    background-image: url(../../img/keys/right.png);
-    background-size: cover;
-}
-
-#space {
-    background: unset;
-    width: 75px;
-    height: 75px;
-    border: none;
-    background-image: url(../../img/keys/left.png);
-    transform: rotate(90deg);
-    background-size: cover;
-}
-
-#action {
-    background: unset;
-    width: 75px;
-    height: 75px;
-    border: none;
-    background-image: url(../../img/keys/right.png);
-    transform: rotate(90deg);
-    background-size: cover;
 }
 
 canvas {
@@ -141,6 +195,14 @@ canvas {
 }
 
 @media (pointer: coarse) {
+    .mute-button-container {
+        display: flex;
+    }
+
+    .mute-button-container-desktop {
+        display: none;
+    }
+
     .mobile-buttons {
         display: flex;
     }

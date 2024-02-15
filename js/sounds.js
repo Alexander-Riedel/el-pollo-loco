@@ -20,11 +20,22 @@ endboss_dead_sound.volume = 0.6;
 
 
 function toggleSound() {
-    let muteButton = document.getElementById('mute');
+    let muteButton = document.getElementById('mute-button');
     if (muteButton.getAttribute('onclick') === 'toggleSound(), muteSounds()') {
         muteButton.setAttribute('onclick', 'toggleSound(), unmuteSounds()');
+        muteButton.innerHTML = '<img id="mute" src="/img/keys/muted.svg" alt="left" />';
     } else {
         muteButton.setAttribute('onclick', 'toggleSound(), muteSounds()');
+        muteButton.innerHTML = '<img id="mute" src="/img/keys/unmuted.svg" alt="left" />';
+    }
+
+    let muteButtonDesktop = document.getElementById('mute-button-desktop');
+    if (muteButtonDesktop.getAttribute('onclick') === 'toggleSound(), muteSounds()') {
+        muteButtonDesktop.setAttribute('onclick', 'toggleSound(), unmuteSounds()');
+        muteButtonDesktop.innerHTML = '<img id="mute" src="/img/keys/muted.svg" alt="left" />';
+    } else {
+        muteButtonDesktop.setAttribute('onclick', 'toggleSound(), muteSounds()');
+        muteButtonDesktop.innerHTML = '<img id="mute" src="/img/keys/unmuted.svg" alt="left" />';
     }
 }
 
