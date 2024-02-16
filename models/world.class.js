@@ -98,12 +98,12 @@ class World {
         this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
                 if (bottle.isCollidingWithBottle(enemy)) {
+                    this.throwableObjects.forEach((bottle) => {
+                        bottle.splashAnimation(bottle, enemy)
+                    });
                     setTimeout(() => {
                         this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
                     }, 500);
-                    this.throwableObjects.forEach((bottle) => {
-                        bottle.splashAnimation(bottle,enemy)
-                    });
                     enemy.playAnimation(enemy.IMAGES_DEAD);
                     enemy.playDeadSound();
                     enemy.isDead = true;
@@ -112,21 +112,24 @@ class World {
             });
             this.level.endboss.forEach((endboss) => {
                 if (bottle.isCollidingWithBottle(endboss)) {
+                    endboss.playHitSound();
+                    this.throwableObjects.forEach((bottle) => {
+                        bottle.splashAnimation(bottle, endboss)
+                    });
                     setTimeout(() => {
                         this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
                     }, 500);
-                    this.throwableObjects.forEach((bottle) => {
-                        bottle.splashAnimation(bottle,endboss)
-                    });
                     this.statusBarEndboss.setPercentage(endboss.energy - 20);
                     endboss.energy = endboss.energy - 20;
                     if (endboss.energy == 0) {
-                        this.killEnemy(endboss);
-                        if (levelNumber == 10) {
-                            this.winGame();
-                        } else {
-                            this.loadNextLevel();
-                        }
+                        setTimeout(() => {
+                            this.killEnemy(endboss);
+                            if (levelNumber == 10) {
+                                this.winGame();
+                            } else {
+                                this.loadNextLevel();
+                            }
+                        }, 100);
                     }
                 }
             });
@@ -212,17 +215,19 @@ class World {
         this.addObjectsToMap(this.level.collectibleObjects);
 
         this.ctx.translate(-this.camera_x, -this.camery_y);
+
         // ---------------- space for fixed objects -------------------
         this.addToMap(this.statusBarHealth);
         this.addToMap(this.statusBarCoins);
         this.addToMap(this.statusBarBottles);
         this.addToMap(this.statusBarEndboss);
         this.ctx.translate(this.camera_x, this.camery_y);
+        // ------------------------------------------------------------
 
-        this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.endboss);
+        this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, this.camery_y);
 
