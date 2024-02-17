@@ -1,10 +1,5 @@
 class Endboss extends CollidableObject {
 
-
-    //x = 6500; // Spawn kommt aus dem Level
-    //height = 200;
-    //width = 120;
-    //speed = 10;
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -22,7 +17,7 @@ class Endboss extends CollidableObject {
         'img/4_enemie_boss_chicken/2_alert/G10.png',
         'img/4_enemie_boss_chicken/2_alert/G11.png',
         'img/4_enemie_boss_chicken/2_alert/G12.png'
-    ]
+    ];
     currentImage = 0;
     offset = {
         top: 40,
@@ -32,8 +27,6 @@ class Endboss extends CollidableObject {
     };
     collisionAdjustmentY = 60;
     isDead = false;
-    //dead_sound = new Audio('audio/peep.wav');
-    //hit_sound = new Audio('audio/hit.wav');
     walkingInterval;
     hadFirstContact = false;
 
@@ -78,10 +71,6 @@ class Endboss extends CollidableObject {
         endboss_dead_sound.play();
         clearInterval(this.walkingInterval);
         this.y = 300;
-    }
-
-    playHitSound() {
-        glass_hit.play();
     }
 
 }

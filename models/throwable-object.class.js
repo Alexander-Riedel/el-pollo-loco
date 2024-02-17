@@ -1,7 +1,5 @@
 class ThrowableObject extends MovableObject {
 
-    //throw_sound = new Audio('audio/throw.wav');
-
     offset = {
         top: 10,
         right: 10,
@@ -59,30 +57,38 @@ class ThrowableObject extends MovableObject {
     }
 
     splashAnimation(bottle, enemy) {
-        bottle.offset.top = 250;
+        bottle.offset.top = 1000;
         clearInterval(this.throwInterval);
         if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
-            clearInterval(this.applyBottleGravityInterval);
-            this.x = enemy.x;
-            this.y = enemy.y;
-            this.speedY = 0;
-            this.acceleration = 0;
+            this.enemySplashAnimation(enemy);
         } else {
-            this.x = bottle.x;
-            this.y = bottle.y;
-            this.speedY = -5;
-            this.acceleration = 0.1;
-            setInterval(() => {
-                if (this.direction == true) {
-                    this.x -= 4;
-                } else {
-                    this.x += 4;
-                }
-            }, 1000 / 30);
+            this.endbossSplashAnimation(bottle);
         }
         setInterval(() => {
             this.playAnimation(this.IMAGES_BOTTLE_SPLASH);
         }, 1000 / 10);
+    }
+
+    enemySplashAnimation(enemy) {
+        clearInterval(this.applyBottleGravityInterval);
+        this.x = enemy.x;
+        this.y = enemy.y;
+        this.speedY = 0;
+        this.acceleration = 0;
+    }
+
+    endbossSplashAnimation(bottle) {
+        this.x = bottle.x;
+        this.y = bottle.y;
+        this.speedY = -5;
+        this.acceleration = 0.1;
+        setInterval(() => {
+            if (this.direction == true) {
+                this.x -= 4;
+            } else {
+                this.x += 4;
+            }
+        }, 1000 / 30);
     }
 
 }

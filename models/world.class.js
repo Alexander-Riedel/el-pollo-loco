@@ -16,8 +16,6 @@ class World {
     coinsTotal = 0;
     coinsTotal = this.level.collectibleObjects.filter(obj => obj instanceof Coin).length;
     bottles = 0;
-    collect_coin_sound = new Audio('audio/coin.wav');
-    collect_bottle_sound = new Audio('audio/bottle.wav');
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -68,30 +66,34 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                if (this.checkCharacterIsAboveEnemy(this.character, enemy) && this.character.isAboveGround()) {
-                    this.hitEnemy(enemy);
-                } else {
-                    this.character.hit();
-                    this.statusBarHealth.setPercentage(this.character.energy);
-                    if (this.character.energy == 0) {
-                        this.loseGame();
-                    }
-                }
+                this.collidingWithEnemy(enemy);
             }
         });
         this.level.endboss.forEach((endboss) => {
             if (this.character.isColliding(endboss)) {
-                if (this.checkCharacterIsAboveEnemy(this.character, endboss) && this.character.isAboveGround()) {
-                    this.hitEnemy(endboss);
-                } else {
-                    this.character.hit();
-                    this.statusBarHealth.setPercentage(this.character.energy);
-                    if (this.character.energy == 0) {
-                        this.loseGame();
-                    }
-                }
+                this.collidingWithEndboss(endboss);
             }
         });
+    }
+
+    collidingWithEnemy(enemy) {
+        if (this.checkCharacterIsAboveEnemy(this.character, enemy) && this.character.isAboveGround()) {
+            this.hitEnemy(enemy);
+        } else {
+            this.character.hit();
+            this.statusBarHealth.setPercentage(this.character.energy);
+            if (this.character.energy == 0) {
+                this.loseGame();
+            }
+        }
+    }
+
+    collidingWithEndboss(endboss) {
+        this.character.hit();
+        this.statusBarHealth.setPercentage(this.character.energy);
+        if (this.character.energy == 0) {
+            this.loseGame();
+        }
     }
 
     checkTrowableCollisions() {
@@ -122,22 +124,29 @@ class World {
 
     endbossCollidingWithBottle(bottle, endboss) {
         if (bottle.isCollidingWithBottle(endboss)) {
-            setTimeout(() => {
-                this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
-            }, 500);
             this.throwableObjects.forEach((bottle) => {
                 bottle.splashAnimation(bottle, endboss)
             });
-            this.statusBarEndboss.setPercentage(endboss.energy - 20);
-            endboss.energy = endboss.energy - 20;
-            if (endboss.energy == 0) {
+            glass_hit.play();
+            setTimeout(() => {
+                this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+            }, 500);
+            this.calculateEndbossEnergy(endboss);
+        }
+    }
+
+    calculateEndbossEnergy(endboss) {
+        this.statusBarEndboss.setPercentage(endboss.energy - 20);
+        endboss.energy = endboss.energy - 20;
+        if (endboss.energy == 0) {
+            setTimeout(() => {
                 this.killEnemy(endboss);
                 if (levelNumber == 10) {
                     this.winGame();
                 } else {
                     this.loadNextLevel();
                 }
-            }
+            }, 100);
         }
     }
 
@@ -152,13 +161,13 @@ class World {
     }
 
     hitEnemy(enemy) {
-        if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
-            this.character.jump(15, 0);
-            this.killEnemy(enemy);
-        } else if (enemy instanceof Endboss) {
-            this.character.jump(20, 0);
-            this.hitEndboss(enemy);
-        }
+        //if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
+        this.character.jump(15, 0);
+        this.killEnemy(enemy);
+        //} else if (enemy instanceof Endboss) {
+        //    this.character.jump(20, 0);
+        //    this.hitEndboss(enemy);
+        //}
     }
 
     hitEndboss(endboss) {
@@ -181,7 +190,6 @@ class World {
         enemy.playAnimation(enemy.IMAGES_DEAD);
         enemy.playDeadSound();
         enemy.isDead = true;
-        //enemy.energy = 100;
         enemy.offset.top = 250;
     }
 
@@ -201,13 +209,11 @@ class World {
 
     collectCoin() {
         this.character.coins++;
-        //this.collect_coin_sound.volume = 0.1;
         collect_coin_sound.play();
     }
 
     collectBottle() {
         this.character.bottles++;
-        //this.collect_bottle_sound.volume = 0.1;
         collect_bottle_sound.play();
     }
 
@@ -275,6 +281,7 @@ class World {
     }
 
     loadNextLevel() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.clearAllIntervals();
         setTimeout(() => {
             renderLevelDone();
@@ -304,6 +311,7 @@ class World {
         chicken_dead_sound.remove();
         chicken_small_dead_sound.remove();
         endboss_dead_sound.remove();
+        glass_hit.remove();
     }
 
     winGame() {

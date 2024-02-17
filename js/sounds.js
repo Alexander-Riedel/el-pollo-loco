@@ -66,5 +66,5 @@ function unmuteSounds() {
     chicken_dead_sound.volume = 0.5;
     chicken_small_dead_sound.volume = 0.7;
     endboss_dead_sound.volume = 0.6;
-    glass_hit.volume = 0.5;
+    glass_hit.volume = 0.1;
 }

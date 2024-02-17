@@ -12,7 +12,11 @@ function initLevel4() {
             new ChickenSmall(2100, 3),
             new ChickenSmall(2800, 3),
             new ChickenSmall(4900, 3),
-            new ChickenSmall(6000, 3)
+            new ChickenSmall(5300, 3),
+            new Chicken(6000, 3),
+            new Chicken(6500, 3),
+            new Chicken(7200, 3),
+            new Chicken(7400, 3)
         ],
         [
             new Endboss(7000, 140, 4, 100, 1.5)
