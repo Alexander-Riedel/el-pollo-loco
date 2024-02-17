@@ -1,3 +1,7 @@
+/**
+ * Initializes level 7 of the game.
+ * This function sets up the initial configuration for level 1, including creating characters, enemies, background objects, buildings, and collectible objects.
+ */
 function initLevel7() {
 
     level1 = new Level(

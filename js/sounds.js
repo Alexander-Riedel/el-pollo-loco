@@ -21,6 +21,11 @@ endboss_dead_sound.volume = 0.6;
 glass_hit.volume = 0.1
 
 
+/**
+ * Toggles sound on and off.
+ * This function changes the behavior of the mute button,
+ * switching between muting and unmuting the game sounds.
+ */
 function toggleSound() {
     let muteButton = document.getElementById('mute-button');
     if (muteButton.getAttribute('onclick') === 'toggleSound(), muteSounds()') {
@@ -42,6 +47,10 @@ function toggleSound() {
 }
 
 
+/**
+ * Mutes all game sounds.
+ * This function sets the volume of all game sounds to 0, effectively muting them.
+ */
 function muteSounds() {
     collect_coin_sound.volume = 0;
     collect_bottle_sound.volume = 0;
@@ -56,6 +65,10 @@ function muteSounds() {
 }
 
 
+/**
+ * Unmutes all game sounds.
+ * This function sets the volume of all game sounds back to their original levels.
+ */
 function unmuteSounds() {
     collect_coin_sound.volume = 0.1;
     collect_bottle_sound.volume = 0.1;
