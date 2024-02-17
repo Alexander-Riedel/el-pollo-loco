@@ -116,7 +116,7 @@ class World {
                 bottle.splashAnimation(bottle, enemy)
             });
             enemy.playAnimation(enemy.IMAGES_DEAD);
-            enemy.playDeadSound();
+            enemy.playDeadByBottleSound();
             enemy.isDead = true;
             enemy.offset.top = 250;
         }
@@ -161,13 +161,8 @@ class World {
     }
 
     hitEnemy(enemy) {
-        //if (enemy instanceof ChickenSmall || enemy instanceof Chicken) {
         this.character.jump(15, 0);
         this.killEnemy(enemy);
-        //} else if (enemy instanceof Endboss) {
-        //    this.character.jump(20, 0);
-        //    this.hitEndboss(enemy);
-        //}
     }
 
     hitEndboss(endboss) {

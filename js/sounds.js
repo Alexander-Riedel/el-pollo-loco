@@ -16,7 +16,7 @@ walking_sound.volume = 1;
 jump_sound.volume = 1;
 hurt_sound.volume = 0.2;
 chicken_dead_sound.volume = 0.5;
-chicken_small_dead_sound.volume = 0.7;
+chicken_small_dead_sound.volume = 0.5;
 endboss_dead_sound.volume = 0.6;
 glass_hit.volume = 0.1
 
@@ -63,8 +63,8 @@ function unmuteSounds() {
     walking_sound.volume = 1;
     jump_sound.volume = 1;
     hurt_sound.volume = 0.2;
-    chicken_dead_sound.volume = 0.5;
-    chicken_small_dead_sound.volume = 0.7;
+    chicken_dead_sound.volume = 0.2;
+    chicken_small_dead_sound.volume = 0.2;
     endboss_dead_sound.volume = 0.6;
     glass_hit.volume = 0.1;
 }

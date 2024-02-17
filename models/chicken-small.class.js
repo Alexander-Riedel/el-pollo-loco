@@ -50,4 +50,9 @@ class ChickenSmall extends CollidableObject {
         clearInterval(this.walkingInterval);
     }
 
+    playDeadByBottleSound() {
+        glass_hit.play();
+        clearInterval(this.walkingInterval);
+    }
+
 }
