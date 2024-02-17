@@ -97,40 +97,48 @@ class World {
     checkTrowableCollisions() {
         this.throwableObjects.forEach((bottle) => {
             this.level.enemies.forEach((enemy) => {
-                if (bottle.isCollidingWithBottle(enemy)) {
-                    setTimeout(() => {
-                        this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
-                    }, 500);
-                    this.throwableObjects.forEach((bottle) => {
-                        bottle.splashAnimation(bottle,enemy)
-                    });
-                    enemy.playAnimation(enemy.IMAGES_DEAD);
-                    enemy.playDeadSound();
-                    enemy.isDead = true;
-                    enemy.offset.top = 250;
-                }
+                this.enemyCollidingWithBottle(bottle, enemy);
             });
             this.level.endboss.forEach((endboss) => {
-                if (bottle.isCollidingWithBottle(endboss)) {
-                    setTimeout(() => {
-                        this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
-                    }, 500);
-                    this.throwableObjects.forEach((bottle) => {
-                        bottle.splashAnimation(bottle,endboss)
-                    });
-                    this.statusBarEndboss.setPercentage(endboss.energy - 20);
-                    endboss.energy = endboss.energy - 20;
-                    if (endboss.energy == 0) {
-                        this.killEnemy(endboss);
-                        if (levelNumber == 10) {
-                            this.winGame();
-                        } else {
-                            this.loadNextLevel();
-                        }
-                    }
-                }
+                this.endbossCollidingWithBottle(bottle, endboss);
             });
         });
+    }
+
+    enemyCollidingWithBottle(bottle, enemy) {
+        if (bottle.isCollidingWithBottle(enemy)) {
+            setTimeout(() => {
+                this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+            }, 500);
+            this.throwableObjects.forEach((bottle) => {
+                bottle.splashAnimation(bottle, enemy)
+            });
+            enemy.playAnimation(enemy.IMAGES_DEAD);
+            enemy.playDeadSound();
+            enemy.isDead = true;
+            enemy.offset.top = 250;
+        }
+    }
+
+    endbossCollidingWithBottle(bottle, endboss) {
+        if (bottle.isCollidingWithBottle(endboss)) {
+            setTimeout(() => {
+                this.throwableObjects.splice(this.throwableObjects.indexOf(bottle), 1);
+            }, 500);
+            this.throwableObjects.forEach((bottle) => {
+                bottle.splashAnimation(bottle, endboss)
+            });
+            this.statusBarEndboss.setPercentage(endboss.energy - 20);
+            endboss.energy = endboss.energy - 20;
+            if (endboss.energy == 0) {
+                this.killEnemy(endboss);
+                if (levelNumber == 10) {
+                    this.winGame();
+                } else {
+                    this.loadNextLevel();
+                }
+            }
+        }
     }
 
     deleteBottle() {
