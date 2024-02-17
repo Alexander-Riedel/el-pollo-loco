@@ -220,17 +220,19 @@ class World {
         this.addObjectsToMap(this.level.collectibleObjects);
 
         this.ctx.translate(-this.camera_x, -this.camery_y);
+
         // ---------------- space for fixed objects -------------------
         this.addToMap(this.statusBarHealth);
         this.addToMap(this.statusBarCoins);
         this.addToMap(this.statusBarBottles);
         this.addToMap(this.statusBarEndboss);
         this.ctx.translate(this.camera_x, this.camery_y);
+        // ------------------------------------------------------------
 
-        this.addObjectsToMap(this.throwableObjects);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.endboss);
+        this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, this.camery_y);
 

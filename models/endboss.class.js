@@ -80,4 +80,8 @@ class Endboss extends CollidableObject {
         this.y = 300;
     }
 
+    playHitSound() {
+        glass_hit.play();
+    }
+
 }
