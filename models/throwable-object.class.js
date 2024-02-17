@@ -71,7 +71,7 @@ class ThrowableObject extends MovableObject {
 
     enemySplashAnimation(enemy) {
         clearInterval(this.applyBottleGravityInterval);
-        this.x = enemy.x;
+        this.x = enemy.x - 10;
         this.y = enemy.y;
         this.speedY = 0;
         this.acceleration = 0;
