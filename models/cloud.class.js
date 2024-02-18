@@ -6,6 +6,11 @@ class Cloud extends MovableObject {
     height = 305 + Math.random() * 100;
     speed = 1;
 
+    /**
+     * Creates a Cloud object with a random position and size.
+     * @param {string} imagePath - The path to the image file.
+     * @param {number} x - The initial x-coordinate of the cloud.
+     */
     constructor(imagePath, x) {
         super().loadImage(imagePath);
 
@@ -13,6 +18,9 @@ class Cloud extends MovableObject {
         this.animate();
     }
 
+    /**
+     * Animates the cloud by moving it left at a fixed interval.
+     */
     animate() {
         setInterval(() => {
             this.moveLeft();

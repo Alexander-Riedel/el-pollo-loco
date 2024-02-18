@@ -1,10 +1,8 @@
 class ChickenSmall extends CollidableObject {
 
     y = 382;
-    //x = 5000 + Math.random() * 4000; // Spawn
     height = 40;
     width = 25;
-    //speed = 10 * 0.15 + Math.random() * 25; // Speed
     IMAGES_WALKING = [
         'img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
         'img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
@@ -20,9 +18,13 @@ class ChickenSmall extends CollidableObject {
     };
     collisionAdjustmentY = 75;
     isDead = false;
-    //dead_sound = new Audio('audio/chicken-dead.wav');
     walkingInterval;
 
+    /**
+     * Constructs a ChickenSmall object with the specified parameters.
+     * @param {number} x - The initial x-coordinate of the ChickenSmall object.
+     * @param {number} speed - The speed of the ChickenSmall object.
+     */
     constructor(x, speed) {
         super().loadImage('img/3_enemies_chicken/chicken_small/1_walk/3_w.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -33,6 +35,10 @@ class ChickenSmall extends CollidableObject {
         this.animate();
     }
 
+    /**
+     * Animates the ChickenSmall object.
+     * Moves the ChickenSmall object left and plays the walking animation.
+     */
     animate() {
         this.walkingInterval = setInterval(() => {
             this.moveLeft();
@@ -45,11 +51,17 @@ class ChickenSmall extends CollidableObject {
         }, 1000 / 10);
     }
 
+    /**
+     * Plays the sound effect for the ChickenSmall's death and stops its walking animation.
+     */
     playDeadSound() {
         chicken_small_dead_sound.play();
         clearInterval(this.walkingInterval);
     }
 
+    /**
+     * Plays the sound effect for the ChickenSmall's death caused by a bottle hit and stops its walking animation.
+     */
     playDeadByBottleSound() {
         glass_hit.play();
         clearInterval(this.walkingInterval);

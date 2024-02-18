@@ -30,6 +30,14 @@ class Endboss extends CollidableObject {
     walkingInterval;
     hadFirstContact = false;
 
+    /**
+     * Constructs a new Endboss object with the specified parameters.
+     * @param {number} x - The x-coordinate of the Endboss.
+     * @param {number} y - The y-coordinate of the Endboss.
+     * @param {number} speed - The speed of the Endboss.
+     * @param {number} energy - The energy level of the Endboss.
+     * @param {number} size - The size of the Endboss.
+     */
     constructor(x, y, speed, energy, size) {
         super().loadImage('img/4_enemie_boss_chicken/1_walk/G4.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -44,6 +52,9 @@ class Endboss extends CollidableObject {
         this.animate();
     }
 
+    /**
+     * Initiates the animation and movement for the Endboss object.
+     */
     animate() {
         let i = 0;
         setInterval(() => {
@@ -67,6 +78,9 @@ class Endboss extends CollidableObject {
         }, 1000 / 30);
     }
 
+    /**
+     * Plays the dead sound for the Endboss, stops its walking animation, and adjusts its position.
+     */
     playDeadSound() {
         endboss_dead_sound.play();
         clearInterval(this.walkingInterval);

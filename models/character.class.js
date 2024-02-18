@@ -1,13 +1,10 @@
 class Character extends CollidableObject {
 
-    y = 227; // 227
+    y = 227;
     height = 200;
     speed = 5;
     currentImage = 0;
     world;
-    //walking_sound = new Audio('audio/step.wav');
-    //jump_sound = new Audio('audio/jump.wav');
-    //hurt_sound = new Audio('audio/hurt.wav');
     isDeathAnimationPlayed = false;
 
     IMAGES_WALKING = [
@@ -18,15 +15,9 @@ class Character extends CollidableObject {
         'img/2_character_pepe/2_walk/W-25.png'
     ];
     IMAGES_JUMPING = [
-        //'img/2_character_pepe/3_jump/J-31.png',
-        //'img/2_character_pepe/3_jump/J-32.png',
-        //'img/2_character_pepe/3_jump/J-33.png',
         'img/2_character_pepe/3_jump/J-34.png',
         'img/2_character_pepe/3_jump/J-35.png',
-        'img/2_character_pepe/3_jump/J-36.png',
-        //'img/2_character_pepe/3_jump/J-37.png',
-        //'img/2_character_pepe/3_jump/J-38.png',
-        //'img/2_character_pepe/3_jump/J-39.png'
+        'img/2_character_pepe/3_jump/J-36.png'
     ];
     IMAGES_DEAD = [
         'img/2_character_pepe/5_dead/D-51.png',
@@ -52,9 +43,8 @@ class Character extends CollidableObject {
         'img/2_character_pepe/1_idle/idle/I-7.png',
         'img/2_character_pepe/1_idle/idle/I-8.png',
         'img/2_character_pepe/1_idle/idle/I-9.png',
-        'img/2_character_pepe/1_idle/idle/I-10.png',
+        'img/2_character_pepe/1_idle/idle/I-10.png'
     ];
-
     offset = {
         top: 80,
         right: 25,
@@ -62,6 +52,10 @@ class Character extends CollidableObject {
         left: 15
     };
 
+    /**
+     * Constructs a new Character instance.
+     * Loads the idle image and other necessary images, applies gravity, and starts the animation.
+     */
     constructor() {
         super().loadImage('img/2_character_pepe/1_idle/idle/I-1.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -73,6 +67,10 @@ class Character extends CollidableObject {
         this.animate();
     }
 
+    /**
+     * Handles the animation logic for the character.
+     * Moves the character based on keyboard input, plays corresponding sounds, and updates animations.
+     */
     animate() {
         setInterval(() => {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -107,7 +105,7 @@ class Character extends CollidableObject {
 
         setInterval(() => {
             if (this.isDead()) {
-                // death sound
+                // add death sound
             } else if (this.isHurt()) {
                 hurt_sound.play();
             } else if (this.world.keyboard.SPACE && !this.isAboveGround()) {

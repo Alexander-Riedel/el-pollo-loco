@@ -1,5 +1,5 @@
 class Level {
-    
+
     backgroundObjects;
     enemies;
     endboss;
@@ -8,6 +8,15 @@ class Level {
     level_start_x = -912;
     level_end_x = 7200;
 
+    /**
+     * Constructs a Level object with specified enemies, endboss, clouds, background objects, buildings, and collectible objects.
+     * @param {Array} enemies - Array of enemy objects in the level.
+     * @param {Array} endboss - Array containing the endboss object.
+     * @param {Array} clouds - Array of cloud objects in the background.
+     * @param {Array} backgroundObjects - Array of background objects.
+     * @param {Array} buildings - Array of building objects.
+     * @param {Array} collectibleObjects - Array of collectible objects in the level.
+     */
     constructor(enemies, endboss, clouds, backgroundObjects, buildings, collectibleObjects) {
         this.enemies = enemies;
         this.endboss = endboss;
@@ -17,14 +26,5 @@ class Level {
         this.buildings = buildings;
     }
 
-    /* moveBackgroundObjects(direction, characterSpeed) {
-        this.backgroundObjects.forEach(obj => {
-            // Passen Sie hier die Geschwindigkeit der Hintergrundobjekte relativ zur Charakterbewegung an
-            if (obj.parallaxSpeed) {
-                obj.x -= characterSpeed * obj.parallaxSpeed * direction;
-            }
-        });
-    } */
-    
 }
 

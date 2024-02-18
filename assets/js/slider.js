@@ -1,3 +1,6 @@
+/**
+ * Opens the slider by removing classes to reveal the slider.
+ */
 function openSlider() {
     document.getElementById('slider-container').classList.remove('slide-to-top');
     document.getElementById('slider-bg').classList.remove('fadeOut');
@@ -12,6 +15,9 @@ function openSlider() {
 }
 
 
+/**
+ * Closes the slider by adding classes to hide it.
+ */
 function closeSlider() {
     document.getElementById('slider-container').classList.remove('slide-from-top');
     document.getElementById('slider-bg').classList.remove('fadeIn');
@@ -31,6 +37,9 @@ function closeSlider() {
 }
 
 
+/**
+ * Renders a message indicating that the level has been completed in the slider.
+ */
 function renderLevelDone() {
     document.getElementById('slider-container').innerHTML = `
         <div id="slider">
@@ -42,6 +51,9 @@ function renderLevelDone() {
 }
 
 
+/**
+ * Renders a message indicating that the player has lost in the slider.
+ */
 function renderYouLose() {
     document.getElementById('slider-container').innerHTML = `
         <div id="slider">
@@ -52,6 +64,9 @@ function renderYouLose() {
 }
 
 
+/**
+ * Renders a message indicating that the player has won in the slider.
+ */
 function renderYouWin() {
     document.getElementById('slider-container').innerHTML = `
         <div id="slider">
